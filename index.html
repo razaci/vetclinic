@@ -991,6 +991,111 @@
         font-size: 0.68rem;
         color: var(--muted);
       }
+      .coach {
+        border: 2px solid var(--teal);
+        background: linear-gradient(135deg, #123432, #121622);
+        padding: 14px;
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+      .coach h2 {
+        font-size: 0.9rem !important;
+        color: #c9fff8 !important;
+      }
+      .coach-step {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .coach-step b {
+        color: var(--gold);
+      }
+      .coach-tip {
+        margin-top: 7px;
+        color: #b7c4d3;
+        font-size: 0.72rem;
+      }
+      .recommended {
+        outline: 3px solid var(--gold) !important;
+        box-shadow: 0 0 24px #f0c75e88 !important;
+        animation: coachPulse 1.1s infinite;
+      }
+      .help-fab {
+        position: fixed;
+        right: 14px;
+        bottom: 82px;
+        z-index: 45;
+        border-color: var(--teal);
+        background: #173c38;
+      }
+      .beginnerOverlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: #05060aef;
+        display: none;
+        place-items: center;
+        padding: 16px;
+      }
+      .beginnerOverlay.show {
+        display: grid;
+      }
+      .beginnerBox {
+        width: min(660px, 100%);
+        max-height: 90vh;
+        overflow: auto;
+        background: #151927;
+        border: 2px solid var(--teal);
+        border-radius: 18px;
+        padding: 22px;
+      }
+      .lesson {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 10px;
+        padding: 11px 0;
+        border-bottom: 1px solid #30364a;
+      }
+      .lesson i {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #23594f;
+        color: white;
+        font-style: normal;
+        font-weight: bold;
+      }
+      .glossary {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
+        margin: 12px 0;
+      }
+      .term {
+        padding: 9px;
+        background: #0b0e17;
+        border-radius: 8px;
+        font-size: 0.7rem;
+      }
+      .term b {
+        display: block;
+        color: var(--gold);
+        margin-bottom: 3px;
+      }
+      @keyframes coachPulse {
+        50% {
+          filter: brightness(1.25);
+        }
+      }
+      @media (max-width: 600px) {
+        .glossary {
+          grid-template-columns: 1fr;
+        }
+        .help-fab {
+          bottom: 86px;
+        }
+      }
       @media (max-width: 1100px) {
         .hospital-grid {
           grid-template-columns: 300px 1fr;
@@ -1039,6 +1144,7 @@
         <div><b id="focus">8</b><small>Focus</small></div>
       </div>
     </header>
+    <button class="help-fab" id="beginnerHelp">? Easy Guide</button>
     <main class="shell">
       <nav class="tabs">
         <button class="active" data-view="emergency">⚕ Emergency</button
@@ -1141,6 +1247,21 @@
       </section>
       <section id="hospital" class="view">
         <div class="event-banner" id="liveEvent"></div>
+        <div class="coach">
+          <h2>🧭 Beginner Care Coach</h2>
+          <div class="coach-step" id="coachStep">
+            <b>Step 1:</b> Choose an animal from the waiting room and press
+            Admit.
+          </div>
+          <div class="coach-tip" id="coachTip">
+            You do not need medical knowledge. The gold outline shows a safe
+            next action.
+          </div>
+          <div class="actions" style="margin-top: 9px">
+            <button id="showNext" class="primary">Show Me the Next Step</button
+            ><button id="explainTerms">Explain Medical Words</button>
+          </div>
+        </div>
         <div class="hospital-grid">
           <div class="stack">
             <div class="panel">
@@ -1374,6 +1495,81 @@
           <p id="opText" class="sub"></p>
         </div>
         <div class="opbuttons" id="opButtons"></div>
+      </div>
+    </div>
+    <div class="beginnerOverlay" id="beginnerOverlay">
+      <div class="beginnerBox">
+        <h2 style="color: var(--gold); margin-top: 0">
+          Welcome to Vet Gods — No Experience Needed
+        </h2>
+        <p class="sub">
+          This is a fictional learning game. You are never expected to know
+          surgery. The game can show you the next safe action and explain every
+          result.
+        </p>
+        <div class="lesson">
+          <i>1</i>
+          <div>
+            <b>Admit</b><br /><span class="sub"
+              >Choose one waiting animal. Red means the animal needs attention
+              sooner.</span
+            >
+          </div>
+        </div>
+        <div class="lesson">
+          <i>2</i>
+          <div>
+            <b>Check</b><br /><span class="sub"
+              >Run highlighted tests to learn what may be wrong. Tests are
+              simple buttons.</span
+            >
+          </div>
+        </div>
+        <div class="lesson">
+          <i>3</i>
+          <div>
+            <b>Treat</b><br /><span class="sub"
+              >Use the gold-highlighted card, or press Treat Correctly and let
+              the care team demonstrate.</span
+            >
+          </div>
+        </div>
+        <div class="lesson">
+          <i>4</i>
+          <div>
+            <b>Learn</b><br /><span class="sub"
+              >The Case Summary explains what was needed in plain
+              language.</span
+            >
+          </div>
+        </div>
+        <div class="glossary" id="easyGlossary">
+          <div class="term">
+            <b>Vitals</b>Body measurements such as heartbeat and temperature.
+          </div>
+          <div class="term">
+            <b>Diagnosis</b>The name of the problem causing the symptoms.
+          </div>
+          <div class="term">
+            <b>Stabilize</b>Make the patient safer before further care.
+          </div>
+          <div class="term">
+            <b>Protocol</b>The safest order for completing care steps.
+          </div>
+          <div class="term">
+            <b>Distress</b>How unstable or uncomfortable the animal is in the
+            game.
+          </div>
+          <div class="term">
+            <b>ICU</b>A room for patients needing constant watching.
+          </div>
+          <div class="term"><b>Hemorrhage</b>Serious bleeding.</div>
+          <div class="term"><b>Airway</b>The passage used to breathe.</div>
+        </div>
+        <div class="actions">
+          <button id="startEasy" class="primary">Start Easy Guided Game</button
+          ><button id="closeGuide">Close Guide</button>
+        </div>
       </div>
     </div>
     <div class="modal" id="modal">
@@ -3218,6 +3414,100 @@
         fillQueue();
         renderLive();
         monitor();
+      })();
+    </script>
+    <script>
+      (() => {
+        const $ = (id) => document.getElementById(id);
+        let beginnerTests = 0;
+        function clearRecommendations() {
+          document
+            .querySelectorAll(".recommended")
+            .forEach((x) => x.classList.remove("recommended"));
+        }
+        function coach() {
+          clearRecommendations();
+          const care = $("correctCare"),
+            hasPatient = care && !care.disabled;
+          let target, text, tip;
+          if (!hasPatient) {
+            target = document.querySelector("[data-live-assign]");
+            text =
+              "<b>Step 1: Admit an animal.</b> Choose a patient from the waiting room. Start with a red urgent card when one appears.";
+            tip =
+              "Press Admit. The game will move the animal into the treatment area.";
+          } else if (beginnerTests < 2) {
+            target = document.querySelector("#liveTests button:not(:disabled)");
+            text = `<b>Step 2: Learn what is wrong.</b> Press the gold-highlighted test. You have completed ${beginnerTests} of 2 beginner checks.`;
+            tip =
+              "A test reveals a clue. There is no need to understand the abbreviation yet—the result explains itself.";
+          } else {
+            target = care;
+            text =
+              "<b>Step 3: Let the team demonstrate correct care.</b> Press Treat Correctly to apply the safe simulated sequence automatically.";
+            tip =
+              "Afterward, the Case Summary opens and explains every step in ordinary language.";
+          }
+          $("coachStep").innerHTML = text;
+          $("coachTip").textContent = tip;
+          if (target) target.classList.add("recommended");
+          return target;
+        }
+        $("showNext").onclick = () => {
+          const t = coach();
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+        $("beginnerHelp").onclick = () =>
+          $("beginnerOverlay").classList.add("show");
+        $("explainTerms").onclick = () =>
+          $("beginnerOverlay").classList.add("show");
+        $("closeGuide").onclick = () => {
+          $("beginnerOverlay").classList.remove("show");
+          localStorage.setItem("vetGodsGuideSeen", "1");
+          coach();
+        };
+        $("startEasy").onclick = () => {
+          $("difficulty").value = "guided";
+          $("difficulty").dispatchEvent(new Event("change", { bubbles: true }));
+          $("beginnerOverlay").classList.remove("show");
+          localStorage.setItem("vetGodsGuideSeen", "1");
+          document.querySelector('[data-view="hospital"]').click();
+          setTimeout(coach, 100);
+        };
+        document.addEventListener("click", (e) => {
+          if (e.target.closest("[data-live-assign]")) {
+            beginnerTests = 0;
+            setTimeout(coach, 80);
+          }
+          if (e.target.closest("[data-live-test]")) {
+            beginnerTests++;
+            setTimeout(coach, 80);
+          }
+          if (e.target.closest("#correctCare")) {
+            beginnerTests = 0;
+            setTimeout(coach, 100);
+          }
+          if (e.target.closest('[data-view="hospital"]')) setTimeout(coach, 80);
+        });
+        const safeWords =
+          /stabilize|support circulation|controlled hemostasis|count materials/i;
+        new MutationObserver(() => {
+          const box = $("surgeryOverlay");
+          if (!box.classList.contains("show")) return;
+          const txt = $("opText");
+          if (txt && !txt.dataset.easy) {
+            txt.dataset.easy = "1";
+            txt.innerHTML =
+              '<b style="color:var(--gold)">Easy hint:</b> Choose the option that slows down, protects the patient, controls danger, or checks the work.<br><br>' +
+              txt.textContent;
+          }
+          document.querySelectorAll("#opButtons button").forEach((b) => {
+            if (safeWords.test(b.textContent)) b.classList.add("recommended");
+          });
+        }).observe($("opButtons"), { childList: true });
+        if (!localStorage.getItem("vetGodsGuideSeen"))
+          $("beginnerOverlay").classList.add("show");
+        setTimeout(coach, 150);
       })();
     </script>
   </body>
