@@ -907,6 +907,90 @@
         font-size: 0.68rem;
         margin-bottom: 7px;
       }
+      .auto-panel {
+        border-color: #34796f;
+        background: linear-gradient(145deg, #112a29, #10131d);
+      }
+      .auto-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+        font-size: 0.72rem;
+      }
+      .auto-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #596173;
+      }
+      .auto-dot.on {
+        background: var(--green);
+        box-shadow: 0 0 12px var(--green);
+        animation: alarm 1.2s infinite;
+      }
+      .summary-hero {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 18px;
+        background: linear-gradient(120deg, #2e2818, #14282b);
+        border: 1px solid var(--gold);
+        border-radius: 14px;
+      }
+      .summary-icon {
+        font-size: 58px;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .protocol-step {
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        gap: 8px;
+        padding: 9px;
+        border-bottom: 1px solid #30364a;
+      }
+      .protocol-step i {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: #23594f;
+        color: #cafff5;
+        font-style: normal;
+        font-size: 0.7rem;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .product-link {
+        display: block;
+        text-decoration: none;
+        color: #fff0b6;
+        padding: 11px;
+        background: #0c0f18;
+        border: 1px solid #343b50;
+        border-radius: 10px;
+      }
+      .product-link small {
+        display: block;
+        color: var(--muted);
+        margin-top: 5px;
+      }
+      .auto-log {
+        max-height: 145px;
+        overflow: auto;
+        font-size: 0.68rem;
+        color: var(--muted);
+      }
       @media (max-width: 1100px) {
         .hospital-grid {
           grid-template-columns: 300px 1fr;
@@ -934,6 +1018,10 @@
         }
         .bottomnav {
           grid-template-columns: repeat(6, 1fr);
+        }
+        .summary-grid,
+        .product-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -1092,6 +1180,13 @@
               <div class="dialogue" id="liveDialogue">
                 Assign a waiting patient to begin.
               </div>
+              <div class="actions" style="margin-top: 10px">
+                <button id="correctCare" class="primary" disabled>
+                  ⚕ Treat Correctly</button
+                ><button data-view="summary" id="openSummary">
+                  📋 Case Summary
+                </button>
+              </div>
             </div>
             <div class="panel">
               <h2>Differential Diagnosis</h2>
@@ -1139,7 +1234,63 @@
               <h2>Shift Objectives</h2>
               <div id="liveObjectives" class="sub"></div>
             </div>
+            <div class="panel auto-panel">
+              <h2>🤖 Auto Care Service</h2>
+              <p class="sub">
+                Background staff assess and stabilize waiting patients while you
+                use other pages.
+              </p>
+              <div class="auto-status">
+                <i class="auto-dot" id="autoDot"></i
+                ><b id="autoLabel">Auto Care Off</b>
+              </div>
+              <button id="autoToggle" class="primary">Start Auto Care</button>
+              <div class="auto-log" id="autoLog"></div>
+            </div>
           </aside>
+        </div>
+      </section>
+      <section id="summary" class="view">
+        <div class="summary-hero">
+          <div class="summary-icon" id="summaryIcon">📋</div>
+          <div>
+            <h2 id="summaryTitle" style="color: var(--gold); margin: 0 0 5px">
+              Case Summary Center
+            </h2>
+            <p class="sub" id="summaryLead">
+              Complete a manual or Auto Care case to generate a detailed
+              summary.
+            </p>
+          </div>
+        </div>
+        <div class="summary-grid">
+          <div class="panel">
+            <h2>What Was Needed</h2>
+            <div id="summaryProtocol" class="sub">
+              No completed case selected.
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Assessment & Outcome</h2>
+            <div id="summaryAssessment" class="sub">
+              Case results will appear here.
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-top: 12px">
+          <h2>General Equipment Searches</h2>
+          <p class="sub">
+            General equipment and first-aid searches only. These are not
+            treatment instructions, endorsements, or substitutes for a
+            veterinarian.
+          </p>
+          <div class="product-grid" id="summaryProducts"></div>
+        </div>
+        <div class="actions" style="margin-top: 12px">
+          <button data-view="hospital" class="primary">
+            Return to Live Hospital</button
+          ><button id="olderSummary">Previous Summary</button
+          ><button id="newerSummary">Next Summary</button>
         </div>
       </section>
       <section id="clinic" class="view">
@@ -2468,6 +2619,9 @@
               actions: 0,
               fatigue: [8, 14, 5, 11],
               recovery: [],
+              summaries: [],
+              autoCare: false,
+              autoLog: [],
               ...JSON.parse(localStorage.getItem("vetGodsLive") || "{}"),
             };
           } catch {
@@ -2479,6 +2633,9 @@
               actions: 0,
               fatigue: [8, 14, 5, 11],
               recovery: [],
+              summaries: [],
+              autoCare: false,
+              autoLog: [],
             };
           }
         };
@@ -2491,7 +2648,8 @@
           needle = 0,
           dir = 1,
           anim = 0,
-          storm = 0;
+          storm = 0,
+          summaryIndex = 0;
         function save() {
           localStorage.setItem("vetGodsLive", JSON.stringify(S));
         }
@@ -2657,7 +2815,121 @@
             renderLive();
           }
         }
-        function recover() {
+        function productLinks(p) {
+          const common = [
+            ["Pet first-aid kit", "pet first aid kit"],
+            ["Digital pet thermometer", "digital pet thermometer"],
+            ["Emergency pet carrier", "emergency pet carrier"],
+          ];
+          const specific =
+            p.dx.includes("Airway") || p.dx.includes("Cardiac")
+              ? [
+                  ["Pet oxygen-mask kit", "pet oxygen mask kit"],
+                  ["Veterinary stethoscope", "veterinary stethoscope"],
+                ]
+              : p.dx.includes("Hemorrhagic")
+                ? [
+                    ["Self-adherent veterinary wrap", "self adherent vet wrap"],
+                    ["Sterile gauze pads", "sterile gauze pads pet"],
+                  ]
+                : p.dx.includes("Thermal")
+                  ? [
+                      ["Pet cooling mat", "pet cooling mat"],
+                      ["Instant cold packs", "instant cold pack first aid"],
+                    ]
+                  : p.dx.includes("infection")
+                    ? [
+                        ["Washable isolation pads", "washable pet crate pads"],
+                        ["Veterinary disinfectant", "veterinary disinfectant"],
+                      ]
+                    : [
+                        ["Pet recovery collar", "soft pet recovery collar"],
+                        ["Pet monitoring camera", "pet monitoring camera"],
+                      ];
+          return [...specific, ...common];
+        }
+        function recordSummary(p, source) {
+          const item = {
+            id: Date.now(),
+            name: p.name,
+            icon: p.icon,
+            dx: p.dx,
+            signs: p.signs,
+            tests: [...p.tests],
+            protocol: [...p.cards],
+            source,
+            outcome:
+              p.distress <= 20
+                ? "Stabilized for monitored recovery"
+                : "Care team completed the indicated protocol",
+            vitals: {
+              hr: Math.round(p.hr),
+              o2: Math.round(p.o2),
+              bp: Math.round(p.bp),
+              temp: p.temp,
+            },
+            room: p.room,
+            secondary: p.secondary,
+            products: productLinks(p),
+          };
+          S.summaries ||= [];
+          S.summaries.unshift(item);
+          S.summaries = S.summaries.slice(0, 30);
+          summaryIndex = 0;
+          renderSummary();
+        }
+        function renderSummary() {
+          const list = S.summaries || [],
+            s = list[summaryIndex];
+          E("olderSummary").disabled = !s || summaryIndex >= list.length - 1;
+          E("newerSummary").disabled = !s || summaryIndex <= 0;
+          if (!s) return;
+          E("summaryIcon").textContent = s.icon;
+          E("summaryTitle").textContent = `${s.name} · ${s.dx}`;
+          E("summaryLead").textContent = `${s.source} · ${s.outcome}`;
+          E("summaryProtocol").innerHTML = s.protocol
+            .map(
+              (x, i) =>
+                `<div class="protocol-step"><i>${i + 1}</i><div><b>${x}</b><br><span>${i === 0 ? "Immediate priority" : i === s.protocol.length - 1 ? "Definitive care or monitoring" : "Continue after the prior step"}</span></div></div>`,
+            )
+            .join("");
+          E("summaryAssessment").innerHTML =
+            `<b>Presentation</b><br>${s.signs}<br><br><b>Useful tests</b><br>${s.tests.join(" · ")}<br><br><b>Final simulated vitals</b><br>HR ${s.vitals.hr} · SpO₂ ${s.vitals.o2}% · BP ${s.vitals.bp} · Temp ${s.vitals.temp}°<br><br><b>Room</b><br>${s.room}<br><br><b>Secondary history</b><br>${s.secondary}`;
+          E("summaryProducts").innerHTML = s.products
+            .map(
+              ([label, q]) =>
+                `<a class="product-link" target="_blank" rel="noopener" href="https://www.amazon.com/s?k=${encodeURIComponent(q)}"><b>${label}</b><small>Amazon product search · opens new tab</small></a>`,
+            )
+            .join("");
+        }
+        function correctCare() {
+          if (!active) return;
+          revealed = new Set(active.tests);
+          active.done = [...active.cards];
+          active.room = active.dx.includes("infection")
+            ? "Isolation"
+            : active.cards.includes("Surgical Prep")
+              ? "Operating Room"
+              : "ICU";
+          active.distress = 12;
+          active.o2 = 97;
+          active.bp = 104;
+          active.hr = 92;
+          dialogue(
+            `Auto-protocol completed correctly for ${active.name}. Opening the full care summary.`,
+          );
+          recover("Correct Care button");
+          document
+            .querySelectorAll(".view")
+            .forEach((v) => v.classList.toggle("active", v.id === "summary"));
+          document
+            .querySelectorAll("[data-view]")
+            .forEach((v) =>
+              v.classList.toggle("active", v.dataset.view === "summary"),
+            );
+        }
+        function recover(source = "Manual care") {
+          recordSummary(active, source);
           S.saved++;
           S.score += active.boss ? 1500 : 500;
           S.recovery.unshift({
@@ -2732,6 +3004,19 @@
           E("liveChapter").textContent = S.chapter;
           E("bossLabel").textContent =
             S.chapter % 5 === 0 ? "⚠ BOSS EMERGENCY" : "Regular Shift";
+          E("correctCare").disabled = !active;
+          E("autoDot").classList.toggle("on", !!S.autoCare);
+          E("autoLabel").textContent = S.autoCare
+            ? "Auto Care Running"
+            : "Auto Care Off";
+          E("autoToggle").textContent = S.autoCare
+            ? "Pause Auto Care"
+            : "Start Auto Care";
+          E("autoLog").innerHTML =
+            (S.autoLog || [])
+              .slice(0, 8)
+              .map((x) => `<div>• ${x}</div>`)
+              .join("") || "<div>No background cases completed.</div>";
           E("liveQueue").innerHTML = queue
             .map(
               (p) =>
@@ -2799,6 +3084,7 @@
           E("liveObjectives").innerHTML =
             `<b>Chapter goal</b><br>Stabilize ${S.chapter % 5 === 0 ? "the boss patient" : "three patients"}.<br><br><b>Campaign</b><br>Score ${S.score.toLocaleString()} · Saved ${S.saved} · Transfers ${S.lost}<br><br><b>Next unlock</b><br>${S.chapter < 5 ? "Disaster Response at Chapter 5" : S.chapter < 10 ? "Wildlife Center at Chapter 10" : "Elite Teaching Hospital"}`;
           save();
+          renderSummary();
         }
         function monitor() {
           const c = E("ecg"),
@@ -2857,6 +3143,30 @@
           if (r) moveRoom(r.dataset.liveRoom);
         });
         E("skillStop").onclick = stopSkill;
+        E("correctCare").onclick = correctCare;
+        E("openSummary").onclick = renderSummary;
+        E("olderSummary").onclick = () => {
+          summaryIndex = Math.min(
+            (S.summaries || []).length - 1,
+            summaryIndex + 1,
+          );
+          renderSummary();
+        };
+        E("newerSummary").onclick = () => {
+          summaryIndex = Math.max(0, summaryIndex - 1);
+          renderSummary();
+        };
+        E("autoToggle").onclick = () => {
+          S.autoCare = !S.autoCare;
+          S.autoLog ||= [];
+          S.autoLog.unshift(
+            S.autoCare
+              ? "Background care team started."
+              : "Background care team paused.",
+          );
+          save();
+          renderLive();
+        };
         E("addQueue").onclick = () => {
           queue.push(makePatient());
           renderLive();
@@ -2875,6 +3185,36 @@
           storm = Math.max(0, storm - 0.2);
           renderLive();
         }, 5000);
+        setInterval(() => {
+          if (!S.autoCare || !queue.length) return;
+          const p = queue.shift();
+          p.room = p.dx.includes("infection")
+            ? "Isolation"
+            : p.cards.includes("Surgical Prep")
+              ? "Operating Room"
+              : "ICU";
+          p.done = [...p.cards];
+          p.distress = 14;
+          p.o2 = 97;
+          p.bp = 102;
+          p.hr = 94;
+          recordSummary(p, "Background Auto Care");
+          S.saved++;
+          S.score += p.boss ? 1200 : 350;
+          S.recovery.unshift({
+            name: p.name,
+            icon: p.icon,
+            status: "recovering after Auto Care",
+            returnRisk: Math.random() < 0.18,
+          });
+          S.autoLog ||= [];
+          S.autoLog.unshift(`${p.icon} ${p.name}: ${p.dx} treated correctly.`);
+          S.autoLog = S.autoLog.slice(0, 20);
+          S.fatigue = S.fatigue.map((x) => cap(x + 3, 0, 100));
+          fillQueue();
+          save();
+          renderLive();
+        }, 9000);
         fillQueue();
         renderLive();
         monitor();
