@@ -1,49 +1,2884 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>VET GODS — Emergency Clinic Campaign</title>
-<style>
-:root{--bg:#080911;--panel:#131522;--ink:#f6f1e7;--muted:#9fa8ba;--gold:#f0c75e;--teal:#38d7c4;--red:#ff5d6c;--orange:#ffae57;--green:#77df91;--shadow:0 16px 44px #0008}*{box-sizing:border-box}html{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% -10%,#34224f 0,transparent 34%),radial-gradient(circle at 90% 15%,#123d45 0,transparent 27%),var(--bg)}button,select{font:inherit}button{color:var(--ink);background:linear-gradient(#292c40,#1a1c2a);border:1px solid #3c425c;border-radius:10px;padding:10px 13px;cursor:pointer;transition:.16s;touch-action:manipulation}button:hover{transform:translateY(-1px);border-color:var(--gold);filter:brightness(1.1)}button:active{transform:scale(.97)}button:disabled{opacity:.35;cursor:not-allowed;transform:none}.primary{background:linear-gradient(#70591c,#3c2e0e);border-color:var(--gold);color:#fff2bd}.bad{border-color:#8f3440;color:#ffc0c6}.ghost{background:transparent}.small{font-size:.76rem;padding:7px 9px}
-header{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px max(14px,env(safe-area-inset-left));background:#0b0d17ef;backdrop-filter:blur(14px);border-bottom:1px solid #383049}.brand{display:flex;align-items:center;gap:10px}.sigil{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;font-size:24px;color:#201805;background:radial-gradient(circle at 35% 25%,#fff5c5,var(--gold) 50%,#9b6c11);box-shadow:0 0 22px #f0c75e44}.brand b{color:#fff0b9;letter-spacing:.09em}.brand small{display:block;color:var(--muted);font-size:.64rem;letter-spacing:.12em}.hud{display:flex;gap:14px}.hud div{text-align:right}.hud b{display:block;color:var(--gold);font-variant-numeric:tabular-nums}.hud small{color:var(--muted);font-size:.59rem;text-transform:uppercase}.shell{max-width:1500px;margin:auto;padding:16px 16px 90px}.tabs{display:flex;gap:7px;overflow:auto;margin-bottom:14px;scrollbar-width:none}.tabs button.active{background:#3d3219;border-color:var(--gold);color:#fff0b4}.view{display:none}.view.active{display:block}.grid{display:grid;grid-template-columns:minmax(290px,390px) minmax(410px,1fr) 310px;gap:14px}.stack{display:flex;flex-direction:column;gap:14px}.panel{background:linear-gradient(165deg,#191c2c,#10121d);border:1px solid #30354b;border-radius:15px;padding:14px;box-shadow:var(--shadow)}.panel h2,.panel h3{margin:0 0 10px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;font-size:.75rem}.sub{color:var(--muted);font-size:.77rem;line-height:1.45}.patient{overflow:hidden;padding:0;border:2px solid #695a2c}.patient-top{padding:12px 14px;display:flex;justify-content:space-between;background:linear-gradient(90deg,#242137,#161927)}.patient-top h1{font-size:1.2rem;margin:0;color:#fff0bd}.patient-top small{display:block;color:var(--muted);font-size:.68rem;margin-top:3px}.badge{align-self:flex-start;border:1px solid var(--gold);color:var(--gold);padding:4px 7px;border-radius:99px;font-size:.62rem}.scene{height:172px;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#2d5360aa 0,transparent 54%),linear-gradient(#29283e,#11131e)}.animal{font-size:94px;filter:drop-shadow(0 12px 11px #0009);animation:breathe 2.6s ease-in-out infinite}.species,.clock{position:absolute;padding:5px 8px;background:#080a10dd;border-radius:7px;font-size:.67rem}.species{bottom:9px;left:10px}.clock{top:9px;right:10px;border:1px solid #475068}.casebody{padding:13px}.symptoms{line-height:1.43;font-size:.88rem;min-height:58px}.meterline{display:flex;justify-content:space-between;color:var(--muted);font-size:.7rem;margin:10px 0 4px}.meter{height:11px;background:#272b3d;border:1px solid #3b4056;border-radius:99px;overflow:hidden}.meter i{display:block;height:100%;transition:.4s}.conditions{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.chip{font-size:.65rem;padding:4px 7px;border-radius:99px;background:#25293b;color:#c7cfdd;border:1px solid #353b52}.chip.danger{color:#ffb4bd;border-color:#7f3340}.vitals{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px}.vital{padding:7px 8px;background:#0b0d16;border:1px solid #2a3042;border-radius:8px;min-height:48px}.vital span{display:block;font-size:.57rem;text-transform:uppercase;color:var(--muted)}.vital b{font-size:.73rem}.vital.hidden b{filter:blur(4px);user-select:none}.vital.warn b{color:var(--orange)}.vital.bad b{color:var(--red)}.actions{display:flex;gap:7px;flex-wrap:wrap}.assess,.deck{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{position:relative;padding:10px;min-height:91px;text-align:left;background:linear-gradient(150deg,#24293d,#121520);border:1px solid #3a435c;border-radius:11px;cursor:pointer;transition:.15s}.card:hover{border-color:var(--teal);transform:translateY(-2px)}.card h4{margin:0 27px 5px 0;font-size:.78rem;color:#a9fff4}.card p{margin:0;color:var(--muted);font-size:.67rem;line-height:1.3}.cost{position:absolute;right:7px;top:7px;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#0a0c15;border:1px solid var(--gold);color:var(--gold);font-size:.65rem}.card.used{opacity:.32;pointer-events:none}.card.locked{opacity:.48}.card.combo{box-shadow:0 0 0 1px var(--gold),0 0 20px #f0c75e44}.diagnose{display:grid;grid-template-columns:1fr auto;gap:8px}.diagnose select,.setting select{width:100%;background:#0e101a;color:var(--ink);border:1px solid #41485f;border-radius:9px;padding:10px}.log{height:174px;overflow:auto;background:#090b12;border-radius:9px;padding:9px;font-size:.72rem;line-height:1.5}.log .ok{color:var(--green)}.log .no{color:#ff929e}.log .sys{color:#d1bb7a}.log .info{color:#8fc4ff}.shop a{display:block;text-decoration:none;color:#eee0ad;background:#0d0f18;border:1px solid #2b3042;border-radius:8px;padding:8px;margin-top:6px;font-size:.72rem}.shop a small{display:block;color:var(--muted);margin-top:2px}.clinic-grid,.records-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.upgrade,.record{background:linear-gradient(150deg,#1c2131,#10131d);border:1px solid #30384e;border-radius:12px;padding:13px}.upgrade .icon{font-size:30px}.upgrade h3,.record h3{color:#fff0bd;margin:7px 0 4px}.upgrade p,.record p{color:var(--muted);font-size:.74rem;line-height:1.4;min-height:42px}.level{color:var(--teal);font-size:.72rem;margin-bottom:8px}.roster{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.staff{text-align:center;padding:13px;background:#111521;border:1px solid #30374a;border-radius:12px}.staff .face{font-size:35px}.staff b{display:block;color:#fff0bd;margin-top:5px}.staff small{color:var(--muted);font-size:.67rem}.staff.active{border-color:var(--teal);box-shadow:0 0 20px #38d7c422}.inventory{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.supply{padding:10px;background:#0e111a;border:1px solid #2d3549;border-radius:9px}.supply b{display:block;font-size:.77rem}.supply span{color:var(--gold);font-size:.7rem}.progress{height:7px;background:#252a3b;border-radius:9px;overflow:hidden;margin:5px 0}.progress i{height:100%;display:block;background:var(--teal)}.settings{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.setting{background:#0d1019;padding:12px;border-radius:10px;border:1px solid #2c3346}.setting label{display:block;color:#fff0b7;font-size:.75rem;margin-bottom:7px}.toggle{display:flex;justify-content:space-between;align-items:center}.surgeryOverlay,.modal{position:fixed;inset:0;z-index:60;background:#05060adf;display:none;place-items:center;padding:18px}.surgeryOverlay.show,.modal.show{display:grid}.surgery,.modalbox{width:min(620px,100%);background:#151927;border:2px solid var(--gold);border-radius:18px;padding:20px;box-shadow:0 30px 80px #000}.surgery h2,.modalbox h2{margin:0;color:#fff0b8}.opstage{margin:16px 0;padding:17px;background:#090b12;border-radius:12px}.opbuttons{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stars{color:var(--gold);font-size:1.35rem}.toast{position:fixed;z-index:90;left:50%;bottom:80px;transform:translate(-50%,25px);opacity:0;background:#1a2030;border:1px solid var(--teal);padding:10px 14px;border-radius:10px;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}.float{position:fixed;pointer-events:none;font-weight:800;z-index:50;animation:float 1s forwards}.pulseRed{animation:alarm .75s infinite}.bottomnav{display:none}@keyframes breathe{50%{transform:scale(1.035)}}@keyframes float{to{transform:translateY(-55px);opacity:0}}@keyframes alarm{50%{box-shadow:inset 0 0 55px #ff334433}}@media(max-width:1100px){.grid{grid-template-columns:360px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){header{padding:8px 10px}.brand small{display:none}.hud div:nth-child(3),.hud div:nth-child(4){display:none}.shell{padding:10px 10px 88px}.tabs{display:none}.grid{grid-template-columns:1fr}.right{grid-column:auto;display:flex}.scene{height:145px}.animal{font-size:78px}.clinic-grid,.records-grid,.roster,.inventory,.settings{grid-template-columns:repeat(2,1fr)}.bottomnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;z-index:40;bottom:0;left:0;right:0;padding:6px 5px calc(6px + env(safe-area-inset-bottom));background:#0a0c15f5;border-top:1px solid #343a4e}.bottomnav button{font-size:.59rem;padding:7px 2px;border:0;background:transparent}.bottomnav button span{display:block;font-size:18px}.bottomnav button.active{color:var(--gold)}}
-</style></head><body>
-<header><div class="brand"><div class="sigil">⚕</div><div><b>VET GODS</b><small>EMERGENCY CLINIC CAMPAIGN</small></div></div><div class="hud"><div><b id="day">1</b><small>Day</small></div><div><b id="cash">$600</b><small>Funds</small></div><div><b id="rep">0</b><small>Reputation</small></div><div><b id="focus">8</b><small>Focus</small></div></div></header>
-<main class="shell"><nav class="tabs"><button class="active" data-view="emergency">⚕ Emergency</button><button data-view="clinic">🏥 Clinic</button><button data-view="staff">👥 Staff</button><button data-view="records">📋 Records</button><button data-view="settings">⚙ Settings</button></nav>
-<section id="emergency" class="view active"><div class="grid"><div class="stack"><article class="panel patient" id="patientCard"><div class="patient-top"><h1 id="pname">Waiting Room<small>No patient admitted</small></h1><span class="badge" id="rarity">IDLE</span></div><div class="scene"><div class="animal" id="animal">🏥</div><span class="species" id="species">Divine Paw Medical</span><span class="clock" id="clock">SHIFT 08:00</span></div><div class="casebody"><div class="symptoms" id="symptoms">Admit a patient to begin. The diagnosis stays hidden until you commit.</div><div class="meterline"><span>Clinical distress</span><b id="distressText">—</b></div><div class="meter"><i id="distressBar" style="width:0"></i></div><div class="conditions" id="conditions"></div><div class="vitals" id="vitals"></div></div></article><div class="actions"><button class="primary" id="admit">Admit Patient</button><button id="resolve" disabled>Resolve / Transfer</button><button class="ghost small" id="nextDay">End Shift</button></div></div>
-<div class="stack"><div class="panel"><h2>1 · Assessment</h2><div class="assess" id="assess"></div></div><div class="panel"><h2>2 · Commit Diagnosis</h2><div class="diagnose"><select id="diagnosis"><option value="">Select suspected condition…</option></select><button id="commit" disabled>Commit</button></div><p class="sub" id="diagHint">Tests consume focus and simulation time. A correct diagnosis unlocks treatment synergy.</p></div><div class="panel"><h2>3 · Treatment Deck</h2><div class="deck" id="deck"></div></div><div class="panel"><h2>Case Log</h2><div class="log" id="log" aria-live="polite"></div></div></div>
-<aside class="stack right"><div class="panel"><h2>Clinical Brief</h2><div class="sub" id="brief">Match symptoms, stabilize first, and use definitive care in the proper order.</div></div><div class="panel"><h2>Shift Progress</h2><div class="sub"><b id="shiftText">0 / 3 cases</b><div class="progress"><i id="shiftBar" style="width:0"></i></div><span id="streak">Streak: 0</span></div></div><div class="panel shop"><h2>Equipment Catalog</h2><div id="shop"></div><p class="sub">Optional general supplies only. Simulation—not veterinary advice.</p></div></aside></div></section>
-<section id="clinic" class="view"><div class="panel"><h2>Clinic Development</h2><p class="sub">Permanent upgrades improve focus, testing, surgery, monitoring and rewards.</p><div class="clinic-grid" id="upgrades"></div></div><div class="panel" style="margin-top:14px"><h2>Inventory</h2><div class="inventory" id="inventory"></div></div></section>
-<section id="staff" class="view"><div class="panel"><h2>Staff Roster</h2><p class="sub">Choose one assistant per case.</p><div class="roster" id="roster"></div></div></section>
-<section id="records" class="view"><div class="panel"><h2>Campaign Records</h2><div class="records-grid" id="recordCards"></div></div><div class="panel" style="margin-top:14px"><h2>Recent Cases</h2><div id="history" class="sub"></div></div></section>
-<section id="settings" class="view"><div class="panel"><h2>Settings & Save</h2><div class="settings"><div class="setting"><label for="difficulty">Difficulty</label><select id="difficulty"><option value="guided">Guided</option><option value="standard">Standard</option><option value="expert">Expert</option></select></div><div class="setting toggle"><label>Sound effects</label><button id="sound">On</button></div><div class="setting toggle"><label>Reduced motion</label><button id="motion">Off</button></div><div class="setting"><label>Campaign Data</label><div class="actions"><button id="export" class="small">Export</button><button id="reset" class="small bad">Reset</button></div></div></div><p class="sub">Progress autosaves in this browser. In a real emergency, contact a veterinarian.</p></div></section></main>
-<nav class="bottomnav"><button class="active" data-view="emergency"><span>⚕</span>ER</button><button data-view="clinic"><span>🏥</span>Clinic</button><button data-view="staff"><span>👥</span>Staff</button><button data-view="records"><span>📋</span>Records</button><button data-view="settings"><span>⚙</span>Settings</button></nav>
-<div class="surgeryOverlay" id="surgeryOverlay"><div class="surgery"><h2>Operating Theatre</h2><p class="sub" id="opIntro"></p><div class="opstage"><h3 id="opTitle"></h3><p id="opText" class="sub"></p></div><div class="opbuttons" id="opButtons"></div></div></div><div class="modal" id="modal"><div class="modalbox"><h2 id="modalTitle"></h2><div class="stars" id="stars"></div><p id="modalOutcome"></p><p class="sub" id="modalDetail"></p><div class="actions"><button class="primary" id="modalClose">Continue</button></div></div></div><div class="toast" id="toast"></div>
-<script>
-(()=>{"use strict";const $=id=>document.getElementById(id),rnd=a=>a[Math.floor(Math.random()*a.length)],clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-const CASES=[
-{id:"gdv",dx:"Gastric dilatation-volvulus",sp:["Great Dane","German Shepherd","Standard Poodle"],ic:"🐕",sign:"Restless, unproductive retching, with a rapidly distending abdomen.",brief:"A time-critical surgical emergency. Stabilization should precede intervention.",d:79,v:["103.0°F","184 weak","50 labored","pale / muddy",">3 sec","severe abdomen"],tests:["pulse","gums","abdomen"],seq:["oxygen","fluids","analgesia","procedure"],harm:["feed","walk","cool"]},
-{id:"heat",dx:"Heatstroke",sp:["Bulldog","Pug","Labrador"],ic:"🐶",sign:"Collapsed after heat exposure, frantic panting, bright-red tongue and glassy eyes.",brief:"Controlled cooling and stabilization are urgent.",d:73,v:["106.4°F","170","82 pant","brick red","<1 sec","disoriented"],tests:["temperature","resp","gums"],seq:["oxygen","cool","fluids","monitor"],harm:["procedure","feed"]},
-{id:"block",dx:"Urethral obstruction",sp:["Domestic Shorthair","Maine Coon","Siamese"],ic:"🐈‍⬛",sign:"Repeated litter-box visits, vocalizing, licking, and a tense lower belly.",brief:"Obstruction requires stabilization, pain relief and definitive care.",d:71,v:["99.3°F","218","46","tacky pink","2.5 sec","severe caudal"],tests:["history","pulse","abdomen"],seq:["fluids","analgesia","procedure","monitor"],harm:["feed","walk","cool"]},
-{id:"bleed",dx:"Traumatic hemorrhage",sp:["Shepherd mix","Border Collie","Terrier"],ic:"🐕‍🦺",sign:"A jagged limb wound is soaking the fur; the patient is weak and frightened.",brief:"Control external bleeding before lengthy examination.",d:61,v:["100.5°F","154 weak","38","pale pink","3 sec","limb 8/10"],tests:["pulse","gums","pain"],seq:["pressure","fluids","analgesia","procedure"],harm:["feed","walk"]},
-{id:"stasis",dx:"Gastrointestinal stasis",sp:["Lionhead Rabbit","Mini Lop","Rex Rabbit"],ic:"🐰",sign:"Hunched and refusing hay, with no fecal pellets since the prior evening.",brief:"Warmth, fluids, pain management and nutritional support form a chain.",d:63,v:["99.0°F","278","68","pale","2 sec","abdominal guarding"],tests:["temperature","abdomen","history"],seq:["warm","fluids","analgesia","feed"],harm:["cool","walk","procedure"]},
-{id:"birdresp",dx:"Avian respiratory distress",sp:["Green-cheek Conure","Cockatiel","Budgerigar"],ic:"🦜",sign:"Tail bobbing and open-mouth breathing; fluffed and sitting low on the perch.",brief:"Minimize handling. Oxygen, warmth and quiet precede investigation.",d:82,v:["not taken","too rapid","open-mouth","not assessed","—","air hunger"],tests:["resp","history"],seq:["quiet","oxygen","warm","monitor"],harm:["cool","walk","procedure"]},
-{id:"colic",dx:"Acute equine colic",sp:["Quarter Horse","Arabian","Thoroughbred"],ic:"🐴",sign:"Pawing, flank-watching, sweating, and repeatedly attempting to lie down.",brief:"Assess severity, control pain and support perfusion.",d:69,v:["100.8°F","66 high","28","tacky","2.5 sec","visceral 8/10"],tests:["pulse","gums","abdomen"],seq:["analgesia","fluids","walk","monitor"],harm:["feed","cool"]},
-{id:"poison",dx:"Toxin ingestion",sp:["Beagle","Cocker Spaniel","Mixed Breed"],ic:"🦮",sign:"Trembling and pacing after vomiting material containing torn packaging.",brief:"Exposure history and time matter; decontamination is conditional.",d:57,v:["103.2°F","174","42","injected","1.5 sec","nauseated"],tests:["history","pulse","temperature"],seq:["historycard","decontam","fluids","monitor"],harm:["feed","walk"]},
-{id:"parvo",dx:"Severe infectious gastroenteritis",sp:["Mixed puppy","Rottweiler puppy","Shelter puppy"],ic:"🐾",sign:"Profuse vomiting and bloody diarrhea with collapse and sunken eyes.",brief:"Isolation and aggressive supportive care are central.",d:85,v:["104.1°F","192 thready","45","very pale / dry","3 sec","abdominal"],tests:["gums","pulse","history"],seq:["isolate","fluids","warm","monitor"],harm:["walk","procedure"]},
-{id:"trauma",dx:"Polytrauma with shock",sp:["Domestic Shorthair","Tabby","Tortoiseshell"],ic:"🐱",sign:"Open-mouth breathing, cold extremities, and a hind limb held abnormally.",brief:"Treat life threats before the obvious fracture.",d:84,v:["97.7°F","238","66 open-mouth","white-pink","3 sec","pelvis / limb"],tests:["resp","gums","pulse"],seq:["oxygen","warm","fluids","analgesia"],harm:["walk","feed","cool"]},
-{id:"seizure",dx:"Active seizure emergency",sp:["Border Collie","Domestic Shorthair","Cockapoo"],ic:"🐕",sign:"Recurrent convulsions with incomplete recovery and rising temperature.",brief:"Protect the airway and stop prolonged seizure activity.",d:78,v:["104.0°F","188","58","pink","2 sec","unresponsive"],tests:["temperature","history","resp"],seq:["quiet","oxygen","medication","monitor"],harm:["feed","walk"]},
-{id:"anaphylaxis",dx:"Anaphylactic shock",sp:["Labrador","Boxer","Domestic Shorthair"],ic:"🐶",sign:"Sudden facial swelling, vomiting, weakness and difficult breathing after a sting.",brief:"Airway and circulation are threatened together.",d:88,v:["101.8°F","210 weak","70 labored","pale","3 sec","distressed"],tests:["resp","gums","history"],seq:["oxygen","medication","fluids","monitor"],harm:["feed","walk"]}];
-const NAMES=["Brutus","Sunny","Shadow","Nix","Clover","Kiwi","Maple","Biscuit","Pip","Ash","Nova","Mochi","Atlas","Luna","Pepper","Echo","Willow","Scout","Ollie","Sage"],TESTS=[{id:"temperature",n:"Temperature",c:1,m:3,r:[0]},{id:"pulse",n:"Pulse / Heart",c:1,m:3,r:[1]},{id:"resp",n:"Respiratory Rate",c:1,m:2,r:[2]},{id:"gums",n:"Gums / CRT",c:1,m:2,r:[3,4]},{id:"pain",n:"Pain Exam",c:1,m:4,r:[5]},{id:"abdomen",n:"Abdominal Exam",c:1,m:4,r:[5]},{id:"history",n:"Owner History",c:1,m:3,r:[]}];
-const CARDS=[{id:"oxygen",n:"Oxygen Support",d:"Support airway and breathing.",s:"oxygen"},{id:"fluids",n:"Fluid Support",d:"Support circulating volume.",s:"fluids"},{id:"analgesia",n:"Pain Management",d:"Reduce pain and stress.",s:"meds"},{id:"procedure",n:"Definitive Procedure",d:"Open the operating theatre.",s:"surgery",op:1},{id:"pressure",n:"Pressure Bandage",d:"Control external bleeding.",s:"bandage"},{id:"cool",n:"Controlled Cooling",d:"Lower dangerous temperature.",s:"cooling"},{id:"warm",n:"Active Warming",d:"Correct dangerous hypothermia.",s:"warming"},{id:"decontam",n:"Decontamination",d:"Limit selected toxin exposure.",s:"meds"},{id:"feed",n:"Nutritional Support",d:"Species-appropriate support.",s:"nutrition"},{id:"quiet",n:"Low-Stress Chamber",d:"Dark, warm and minimally handled.",s:"oxygen"},{id:"walk",n:"Controlled Movement",d:"Only when specifically indicated.",s:"general"},{id:"monitor",n:"Continuous Monitoring",d:"Watch trends and recovery.",s:"general"},{id:"isolate",n:"Isolation Protocol",d:"Protect the ward from infection.",s:"general"},{id:"historycard",n:"Exposure Reconstruction",d:"Confirm substance and timing.",s:"general"},{id:"medication",n:"Emergency Medication",d:"Condition-specific hospital drug.",s:"meds"}];
-const UPG=[{id:"er",i:"🚑",n:"Emergency Ward",d:"Adds starting focus.",c:260},{id:"lab",i:"🔬",n:"Diagnostic Lab",d:"Tests take less time.",c:300},{id:"or",i:"🩺",n:"Surgical Center",d:"Improves procedure safety.",c:420},{id:"icu",i:"🫀",n:"ICU Monitoring",d:"Slows deterioration.",c:360},{id:"pharmacy",i:"💊",n:"Pharmacy",d:"Adds shift supplies.",c:280},{id:"outreach",i:"📣",n:"Community Trust",d:"Increases rewards.",c:240}],STAFF=[{id:"mara",face:"👩🏽‍⚕️",n:"Dr. Mara",role:"Surgeon",bonus:"procedure"},{id:"finn",face:"🧑🏻‍⚕️",n:"Finn",role:"ER Technician",bonus:"stabilization"},{id:"iya",face:"👩🏿‍🔬",n:"Iya",role:"Lab Specialist",bonus:"testing"},{id:"rowan",face:"🧑🏼‍⚕️",n:"Rowan",role:"Critical Care",bonus:"monitoring"}];
-const DEF={day:1,cash:600,rep:0,focus:8,saved:0,lost:0,total:0,streak:0,best:0,shift:0,difficulty:"standard",sound:true,motion:false,upgrades:{er:0,lab:0,or:0,icu:0,pharmacy:0,outreach:0},supplies:{oxygen:8,fluids:8,meds:8,surgery:5,bandage:7,cooling:6,warming:6,nutrition:5,general:20},staff:"finn",history:[]};let save;try{save={...DEF,...JSON.parse(localStorage.getItem("vetGodsCampaign")||"{}")};save.upgrades={...DEF.upgrades,...save.upgrades};save.supplies={...DEF.supplies,...save.supplies}}catch(e){save=structuredClone(DEF)}let game={p:null,revealed:new Set(),used:new Set(),played:[],diagnosed:false,correct:false,minutes:480,log:[],resolved:false};const diff=()=>({guided:{tick:.6,hint:1,reward:1},standard:{tick:1,hint:0,reward:1.15},expert:{tick:1.45,hint:0,reward:1.4}}[save.difficulty]);
-function persist(){localStorage.setItem("vetGodsCampaign",JSON.stringify(save));hud()}function beep(t="tap"){if(!save.sound)return;try{let a=new AudioContext,o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=t==="good"?640:t==="bad"?150:340;g.gain.setValueAtTime(.045,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.12);o.start();o.stop(a.currentTime+.12)}catch(e){}}function log(t,c="sys"){game.log.unshift(`<div class="${c}">${t}</div>`);$("log").innerHTML=game.log.slice(0,50).join("")}function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1500)}function fly(t,good=1){let e=document.createElement("div");e.className="float";e.textContent=t;e.style.color=good?"var(--green)":"var(--red)";e.style.left="45%";e.style.top="43%";document.body.append(e);setTimeout(()=>e.remove(),1000)}function hud(){$("day").textContent=save.day;$("cash").textContent="$"+save.cash;$("rep").textContent=save.rep;$("focus").textContent=save.focus;$("difficulty").value=save.difficulty;$("sound").textContent=save.sound?"On":"Off";$("motion").textContent=save.motion?"On":"Off"}
-function patient(){let p=structuredClone(rnd(CASES));p.name=rnd(NAMES);p.spec=rnd(p.sp);p.age=rnd(["young","adult","senior"]);p.weight=rnd(["underweight","ideal weight","overweight"]);p.d=clamp(p.d+rnd([-6,-3,0,3,6]),35,94);return p}function admit(){if(game.p&&!game.resolved&&!confirm("Transfer the current patient?"))return;if(game.p&&!game.resolved)finish(0,"Transferred before stabilization.");game={p:patient(),revealed:new Set(),used:new Set(),played:[],diagnosed:false,correct:false,minutes:480+save.shift*55,log:[],resolved:false};save.focus=8+save.upgrades.er;log(`Admitted ${game.p.name}, ${game.p.age}, ${game.p.spec}. Distress ${game.p.d}.`);log("Diagnosis concealed. Begin assessment.","info");render();beep()}
-function advance(m){if(!game.p||game.resolved)return;game.minutes+=m;let mitigation=save.upgrades.icu*.12+(save.staff==="rowan"?.12:0),rate=diff().tick*(game.p.d>=80?1.6:game.p.d>=60?1:.55)*(1-mitigation);game.p.d=clamp(game.p.d+Math.ceil(m/4*rate),0,100);$("patientCard").classList.toggle("pulseRed",game.p.d>=90);if(game.p.d>=100)finish(0,"The patient decompensated before stabilization.")}
-function assess(id){let t=TESTS.find(x=>x.id===id);if(!game.p||game.revealed.has(id)||save.focus<t.c)return;save.focus-=t.c;game.revealed.add(id);t.r.forEach(x=>game.revealed.add("v"+x));let m=Math.max(1,t.m-save.upgrades.lab-(save.staff==="iya"?1:0));advance(m);log(`${t.n}: ${t.r.length?t.r.map(i=>game.p.v[i]).join(" · "):"history supports focused differentials"}.`,"ok");render();beep()}
-function commit(){if(!game.p||game.diagnosed)return;game.diagnosed=true;game.correct=$("diagnosis").value===game.p.id;if(game.correct){save.rep+=6;game.p.d=clamp(game.p.d-5,0,100);log(`Diagnosis confirmed: ${game.p.dx}. Synergy active.`,"ok");toast("Correct diagnosis · synergy unlocked");beep("good")}else{game.p.d=clamp(game.p.d+8,0,100);log(`Working diagnosis incorrect. Actual condition: ${game.p.dx}.`,"no");beep("bad")}render()}
-function quality(id){let i=game.p.seq.indexOf(id);if(i<0)return game.p.harm.includes(id)?"harm":"neutral";return game.p.seq.slice(0,i).every(x=>game.played.includes(x))?"best":"early"}function play(id){let c=CARDS.find(x=>x.id===id);if(!game.p||game.used.has(id)||!game.diagnosed)return;if((save.supplies[c.s]||0)<=0)return toast("Supply depleted — restock at Clinic");game.used.add(id);save.supplies[c.s]--;save.focus=Math.max(0,save.focus-1);let q=quality(id);game.played.push(id);if(q==="best"){let d=13+(game.correct?4:0)+(save.staff==="finn"&&["oxygen","fluids","pressure","warm"].includes(id)?3:0);game.p.d=clamp(game.p.d-d,0,100);save.rep+=3;log(`▶ ${c.n}: correct sequence (−${d} distress).`,"ok");fly("−"+d);beep("good")}else if(q==="early"){game.p.d=clamp(game.p.d-4,0,100);log(`▶ ${c.n}: indicated, but earlier steps were skipped.`,"info");fly("−4")}else if(q==="harm"){game.p.d=clamp(game.p.d+15,0,100);save.rep=Math.max(0,save.rep-3);log(`▶ ${c.n}: contraindicated (+15 distress).`,"no");fly("+15",0);beep("bad")}else{game.p.d=clamp(game.p.d+5,0,100);log(`▶ ${c.n}: not indicated (+5 distress).`,"no");fly("+5",0)}advance(4);if(c.op&&q!=="harm"&&game.p)startOp();render();persist()}
-const OPS=[{t:"Preparation",x:"Choose the safest preparation.",a:["Stabilize and confirm checklist","Proceed immediately","Skip monitoring"],ok:0},{t:"Anesthesia",x:"The monitor shows falling pressure.",a:["Increase risk blindly","Pause and support circulation","Ignore it"],ok:1},{t:"Hemostasis",x:"Bleeding obscures the field.",a:["Apply controlled hemostasis","Continue blindly","End monitoring"],ok:0},{t:"Closure & Recovery",x:"Select the safest final step.",a:["Wake immediately","Count materials, close, monitor","Discharge now"],ok:1}];let op={stage:0,score:0};function startOp(){op={stage:0,score:0};$("surgeryOverlay").classList.add("show");$("opIntro").textContent=`${game.p.name} · ${game.p.dx}. Complete four theatre decisions.`;renderOp()}function renderOp(){let s=OPS[op.stage];$("opTitle").textContent=`${op.stage+1}/4 · ${s.t}`;$("opText").textContent=s.x;$("opButtons").innerHTML=s.a.map((a,i)=>`<button data-op="${i}">${a}</button>`).join("")}function opPick(i){let s=OPS[op.stage];if(i===s.ok){op.score++;beep("good")}else beep("bad");if(++op.stage<OPS.length)return renderOp();$("surgeryOverlay").classList.remove("show");let d=op.score*3+save.upgrades.or*2+(save.staff==="mara"?4:0);game.p.d=clamp(game.p.d-d,0,100);log(`Theatre complete: ${op.score}/4 safe decisions (−${d} distress).`,op.score>=3?"ok":"no");toast(`Surgery score ${op.score}/4`);render()}
-function finish(win,reason){if(!game.p)return;let p=game.p;if(win===undefined)win=p.d<=64;if(p.d>=65)win=0;let stars=win?(p.d<=20?5:p.d<=35?4:3):1,reward=win?Math.round((90+stars*35)*diff().reward*(1+save.upgrades.outreach*.12)):0;if(win){save.saved++;save.streak++;save.best=Math.max(save.best,save.streak);save.cash+=reward;save.rep+=stars*3}else{save.lost++;save.streak=0;save.rep=Math.max(0,save.rep-10)}save.total++;save.shift++;save.history.unshift({name:p.name,dx:p.dx,win,stars,day:save.day,d:p.d});save.history=save.history.slice(0,20);game.resolved=true;$("modalTitle").textContent=win?"Patient Stabilized":"Critical Transfer";$("stars").textContent="★".repeat(stars)+"☆".repeat(5-stars);$("modalOutcome").textContent=win?`${p.name} is ready for ${p.d<=35?"recovery":"specialist transfer"}. +$${reward}`:`${p.name} could not be stabilized in time.`;$("modalDetail").textContent=`${reason||"Case resolved."} Condition: ${p.dx}. Protocol: ${p.seq.map(x=>CARDS.find(c=>c.id===x)?.n||x).join(" → ")}.`;$("modal").classList.add("show");persist();render()}
-function vitalHTML(){if(!game.p)return"";let names=["Temperature","Heart Rate","Respiration","Gums","CRT","Pain / Exam"];return names.map((n,i)=>{let shown=game.revealed.has("v"+i),raw=game.p.v[i],bad=/106|104|97\.|weak|thready|open-mouth|white|muddy|3 sec|severe|unresponsive/i.test(raw),warn=/103|99\.|tacky|pale|2.5|high|distress/i.test(raw);return `<div class="vital ${shown?bad?"bad":warn?"warn":"":"hidden"}"><span>${n}</span><b>${shown?raw:"UNKNOWN"}</b></div>`}).join("")}
-function renderPatient(){let p=game.p;if(!p){$("pname").innerHTML="Waiting Room<small>No patient admitted</small>";$("animal").textContent="🏥";$("species").textContent="Divine Paw Medical";$("rarity").textContent="IDLE";$("symptoms").textContent="Admit a patient to begin. The diagnosis stays hidden until you commit.";$("distressBar").style.width="0";$("distressText").textContent="—";$("vitals").innerHTML="";$("conditions").innerHTML="";return}$("pname").innerHTML=`${p.name}<small>${game.diagnosed?p.dx:"DIAGNOSIS UNKNOWN"}</small>`;$("animal").textContent=p.ic;$("species").textContent=`${p.age} · ${p.spec} · ${p.weight}`;$("rarity").textContent=p.d>=82?"MYTHIC":p.d>=70?"LEGENDARY":"RARE";$("symptoms").textContent=p.sign;$("distressBar").style.width=p.d+"%";$("distressBar").style.background=p.d>=75?"var(--red)":p.d>=45?"var(--orange)":"var(--green)";$("distressText").textContent=`${p.d}/100 · ${p.d>=85?"CRASHING":p.d>=65?"CRITICAL":p.d>=40?"UNSTABLE":"STABLE"}`;$("clock").textContent=`SHIFT ${String(Math.floor(game.minutes/60)).padStart(2,"0")}:${String(game.minutes%60).padStart(2,"0")}`;$("vitals").innerHTML=vitalHTML();$("conditions").innerHTML=[p.d>=75?"Shock risk":"Under observation",game.diagnosed?"Diagnosis committed":"Undiagnosed",...game.played.slice(-2).map(x=>CARDS.find(c=>c.id===x).n)].map((x,i)=>`<span class="chip ${i===0&&p.d>=75?"danger":""}">${x}</span>`).join("");$("brief").textContent=game.diagnosed?p.brief:(diff().hint?`Guided hint: prioritize ${p.tests.join(", ")}.`:"Reveal focused vitals and commit before treatment.")}
-function renderActions(){$("assess").innerHTML=TESTS.map(t=>`<button data-test="${t.id}" ${!game.p||game.revealed.has(t.id)||save.focus<t.c||game.resolved?"disabled":""}>${t.n}<small style="display:block;color:var(--muted)">−${t.c} focus · ${Math.max(1,t.m-save.upgrades.lab)}m</small></button>`).join("");$("commit").disabled=!game.p||game.diagnosed||!$("diagnosis").value;$("resolve").disabled=!game.p||game.resolved;$("deck").innerHTML=CARDS.map(c=>{let used=game.used.has(c.id),stock=save.supplies[c.s]||0,next=game.p&&game.p.seq.find(x=>!game.played.includes(x))===c.id;return `<div class="card ${used?"used":""} ${!game.diagnosed?"locked":""} ${next&&game.correct?"combo":""}" data-card="${c.id}"><span class="cost">${stock}</span><h4>${c.n}</h4><p>${c.d}${next&&game.correct?" · COMBO READY":""}</p></div>`}).join("")}
-function renderClinic(){$("upgrades").innerHTML=UPG.map(u=>{let l=save.upgrades[u.id],cost=u.c*(l+1);return `<div class="upgrade"><div class="icon">${u.i}</div><h3>${u.n}</h3><div class="level">Level ${l} / 3</div><p>${u.d}</p><button data-up="${u.id}" ${l>=3||save.cash<cost?"disabled":""}>${l>=3?"MAX":"Upgrade $"+cost}</button></div>`}).join("");$("inventory").innerHTML=Object.entries(save.supplies).map(([k,v])=>`<div class="supply"><b>${k[0].toUpperCase()+k.slice(1)}</b><span>${v} units</span><button class="small" data-buy="${k}" ${save.cash<35?"disabled":""}>Restock $35</button></div>`).join("")}function renderStaff(){$("roster").innerHTML=STAFF.map(s=>`<div class="staff ${save.staff===s.id?"active":""}"><div class="face">${s.face}</div><b>${s.n}</b><small>${s.role}<br>Bonus: ${s.bonus}</small><button class="small" data-staff="${s.id}" ${save.staff===s.id?"disabled":""}>${save.staff===s.id?"Assigned":"Assign"}</button></div>`).join("")}function renderRecords(){$("recordCards").innerHTML=[["Cases",save.total],["Stabilized",save.saved],["Critical transfers",save.lost],["Best streak",save.best],["Reputation",save.rep],["Clinic upgrades",Object.values(save.upgrades).reduce((a,b)=>a+b,0)]].map(x=>`<div class="record"><h3>${x[1]}</h3><p>${x[0]}</p></div>`).join("");$("history").innerHTML=save.history.length?save.history.map(h=>`<div style="padding:8px;border-bottom:1px solid #292f42">Day ${h.day} · ${h.name} · ${h.dx} — <b style="color:${h.win?"var(--green)":"var(--red)"}">${h.win?"stabilized":"transferred"}</b> · ${h.d}/100</div>`).join(""):"No completed cases yet."}function shop(){let x=[["Pet first-aid kit","https://www.amazon.com/s?k=pet+first+aid+kit"],["Digital pet thermometer","https://www.amazon.com/s?k=pet+thermometer"],["Locate emergency veterinarian","https://www.google.com/search?q=emergency+veterinarian+near+me"]];$("shop").innerHTML=x.map(a=>`<a href="${a[1]}" target="_blank" rel="noopener">${a[0]}<small>External search · opens new tab</small></a>`).join("")}function render(){hud();renderPatient();renderActions();renderClinic();renderStaff();renderRecords();shop();$("shiftText").textContent=`${save.shift} / 3 cases`;$("shiftBar").style.width=Math.min(100,save.shift/3*100)+"%";$("streak").textContent=`Streak: ${save.streak} · Best: ${save.best}`;persist()}function nav(v){document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===v));document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("active",x.dataset.view===v));scrollTo({top:0,behavior:save.motion?"auto":"smooth"})}
-document.addEventListener("click",e=>{let v=e.target.closest("[data-view]");if(v)nav(v.dataset.view);let t=e.target.closest("[data-test]");if(t)assess(t.dataset.test);let c=e.target.closest("[data-card]");if(c)play(c.dataset.card);let u=e.target.closest("[data-up]");if(u){let x=UPG.find(q=>q.id===u.dataset.up),cost=x.c*(save.upgrades[x.id]+1);if(save.cash>=cost){save.cash-=cost;save.upgrades[x.id]++;toast(x.n+" upgraded");render()}}let b=e.target.closest("[data-buy]");if(b&&save.cash>=35){save.cash-=35;save.supplies[b.dataset.buy]+=5;render();toast("Supplies restocked")}let s=e.target.closest("[data-staff]");if(s){save.staff=s.dataset.staff;render()}let o=e.target.closest("[data-op]");if(o)opPick(+o.dataset.op)});$("admit").onclick=admit;$("diagnosis").onchange=renderActions;$("commit").onclick=commit;$("resolve").onclick=()=>finish(undefined,"Clinical endpoint selected.");$("modalClose").onclick=()=>{$("modal").classList.remove("show");game.p=null;game.resolved=false;$("patientCard").classList.remove("pulseRed");render()};$("nextDay").onclick=()=>{if(game.p&&!game.resolved)return toast("Resolve the current case first");save.day++;save.shift=0;Object.keys(save.supplies).forEach(k=>save.supplies[k]+=2+save.upgrades.pharmacy);save.cash=Math.max(0,save.cash-60);toast("New shift · supplies delivered · $60 overhead");render()};$("difficulty").onchange=e=>{save.difficulty=e.target.value;persist();toast("Difficulty updated")};$("sound").onclick=()=>{save.sound=!save.sound;render()};$("motion").onclick=()=>{save.motion=!save.motion;render()};$("export").onclick=()=>{let b=new Blob([JSON.stringify(save,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="vet-gods-save.json";a.click();URL.revokeObjectURL(a.href)};$("reset").onclick=()=>{if(confirm("Erase the entire campaign?")){localStorage.removeItem("vetGodsCampaign");location.reload()}};$("diagnosis").innerHTML='<option value="">Select suspected condition…</option>'+CASES.map(c=>`<option value="${c.id}">${c.dx}</option>`).join("");render();log("Clinic ready. Campaign autosave loaded.")})();
-</script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>VET GODS — Emergency Clinic Campaign</title>
+    <style>
+      :root {
+        --bg: #080911;
+        --panel: #131522;
+        --ink: #f6f1e7;
+        --muted: #9fa8ba;
+        --gold: #f0c75e;
+        --teal: #38d7c4;
+        --red: #ff5d6c;
+        --orange: #ffae57;
+        --green: #77df91;
+        --shadow: 0 16px 44px #0008;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          sans-serif;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 15% -10%, #34224f 0, transparent 34%),
+          radial-gradient(circle at 90% 15%, #123d45 0, transparent 27%),
+          var(--bg);
+      }
+      button,
+      select {
+        font: inherit;
+      }
+      button {
+        color: var(--ink);
+        background: linear-gradient(#292c40, #1a1c2a);
+        border: 1px solid #3c425c;
+        border-radius: 10px;
+        padding: 10px 13px;
+        cursor: pointer;
+        transition: 0.16s;
+        touch-action: manipulation;
+      }
+      button:hover {
+        transform: translateY(-1px);
+        border-color: var(--gold);
+        filter: brightness(1.1);
+      }
+      button:active {
+        transform: scale(0.97);
+      }
+      button:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .primary {
+        background: linear-gradient(#70591c, #3c2e0e);
+        border-color: var(--gold);
+        color: #fff2bd;
+      }
+      .bad {
+        border-color: #8f3440;
+        color: #ffc0c6;
+      }
+      .ghost {
+        background: transparent;
+      }
+      .small {
+        font-size: 0.76rem;
+        padding: 7px 9px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 10px max(14px, env(safe-area-inset-left));
+        background: #0b0d17ef;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid #383049;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sigil {
+        width: 43px;
+        height: 43px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        color: #201805;
+        background: radial-gradient(
+          circle at 35% 25%,
+          #fff5c5,
+          var(--gold) 50%,
+          #9b6c11
+        );
+        box-shadow: 0 0 22px #f0c75e44;
+      }
+      .brand b {
+        color: #fff0b9;
+        letter-spacing: 0.09em;
+      }
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.64rem;
+        letter-spacing: 0.12em;
+      }
+      .hud {
+        display: flex;
+        gap: 14px;
+      }
+      .hud div {
+        text-align: right;
+      }
+      .hud b {
+        display: block;
+        color: var(--gold);
+        font-variant-numeric: tabular-nums;
+      }
+      .hud small {
+        color: var(--muted);
+        font-size: 0.59rem;
+        text-transform: uppercase;
+      }
+      .shell {
+        max-width: 1500px;
+        margin: auto;
+        padding: 16px 16px 90px;
+      }
+      .tabs {
+        display: flex;
+        gap: 7px;
+        overflow: auto;
+        margin-bottom: 14px;
+        scrollbar-width: none;
+      }
+      .tabs button.active {
+        background: #3d3219;
+        border-color: var(--gold);
+        color: #fff0b4;
+      }
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(290px, 390px) minmax(410px, 1fr) 310px;
+        gap: 14px;
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .panel {
+        background: linear-gradient(165deg, #191c2c, #10121d);
+        border: 1px solid #30354b;
+        border-radius: 15px;
+        padding: 14px;
+        box-shadow: var(--shadow);
+      }
+      .panel h2,
+      .panel h3 {
+        margin: 0 0 10px;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 0.77rem;
+        line-height: 1.45;
+      }
+      .patient {
+        overflow: hidden;
+        padding: 0;
+        border: 2px solid #695a2c;
+      }
+      .patient-top {
+        padding: 12px 14px;
+        display: flex;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #242137, #161927);
+      }
+      .patient-top h1 {
+        font-size: 1.2rem;
+        margin: 0;
+        color: #fff0bd;
+      }
+      .patient-top small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.68rem;
+        margin-top: 3px;
+      }
+      .badge {
+        align-self: flex-start;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 4px 7px;
+        border-radius: 99px;
+        font-size: 0.62rem;
+      }
+      .scene {
+        height: 172px;
+        display: grid;
+        place-items: center;
+        position: relative;
+        background:
+          radial-gradient(circle, #2d5360aa 0, transparent 54%),
+          linear-gradient(#29283e, #11131e);
+      }
+      .animal {
+        font-size: 94px;
+        filter: drop-shadow(0 12px 11px #0009);
+        animation: breathe 2.6s ease-in-out infinite;
+      }
+      .species,
+      .clock {
+        position: absolute;
+        padding: 5px 8px;
+        background: #080a10dd;
+        border-radius: 7px;
+        font-size: 0.67rem;
+      }
+      .species {
+        bottom: 9px;
+        left: 10px;
+      }
+      .clock {
+        top: 9px;
+        right: 10px;
+        border: 1px solid #475068;
+      }
+      .casebody {
+        padding: 13px;
+      }
+      .symptoms {
+        line-height: 1.43;
+        font-size: 0.88rem;
+        min-height: 58px;
+      }
+      .meterline {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.7rem;
+        margin: 10px 0 4px;
+      }
+      .meter {
+        height: 11px;
+        background: #272b3d;
+        border: 1px solid #3b4056;
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .meter i {
+        display: block;
+        height: 100%;
+        transition: 0.4s;
+      }
+      .conditions {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 9px;
+      }
+      .chip {
+        font-size: 0.65rem;
+        padding: 4px 7px;
+        border-radius: 99px;
+        background: #25293b;
+        color: #c7cfdd;
+        border: 1px solid #353b52;
+      }
+      .chip.danger {
+        color: #ffb4bd;
+        border-color: #7f3340;
+      }
+      .vitals {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .vital {
+        padding: 7px 8px;
+        background: #0b0d16;
+        border: 1px solid #2a3042;
+        border-radius: 8px;
+        min-height: 48px;
+      }
+      .vital span {
+        display: block;
+        font-size: 0.57rem;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .vital b {
+        font-size: 0.73rem;
+      }
+      .vital.hidden b {
+        filter: blur(4px);
+        user-select: none;
+      }
+      .vital.warn b {
+        color: var(--orange);
+      }
+      .vital.bad b {
+        color: var(--red);
+      }
+      .actions {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .assess,
+      .deck {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .card {
+        position: relative;
+        padding: 10px;
+        min-height: 91px;
+        text-align: left;
+        background: linear-gradient(150deg, #24293d, #121520);
+        border: 1px solid #3a435c;
+        border-radius: 11px;
+        cursor: pointer;
+        transition: 0.15s;
+      }
+      .card:hover {
+        border-color: var(--teal);
+        transform: translateY(-2px);
+      }
+      .card h4 {
+        margin: 0 27px 5px 0;
+        font-size: 0.78rem;
+        color: #a9fff4;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.67rem;
+        line-height: 1.3;
+      }
+      .cost {
+        position: absolute;
+        right: 7px;
+        top: 7px;
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: #0a0c15;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-size: 0.65rem;
+      }
+      .card.used {
+        opacity: 0.32;
+        pointer-events: none;
+      }
+      .card.locked {
+        opacity: 0.48;
+      }
+      .card.combo {
+        box-shadow:
+          0 0 0 1px var(--gold),
+          0 0 20px #f0c75e44;
+      }
+      .diagnose {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+      }
+      .diagnose select,
+      .setting select {
+        width: 100%;
+        background: #0e101a;
+        color: var(--ink);
+        border: 1px solid #41485f;
+        border-radius: 9px;
+        padding: 10px;
+      }
+      .log {
+        height: 174px;
+        overflow: auto;
+        background: #090b12;
+        border-radius: 9px;
+        padding: 9px;
+        font-size: 0.72rem;
+        line-height: 1.5;
+      }
+      .log .ok {
+        color: var(--green);
+      }
+      .log .no {
+        color: #ff929e;
+      }
+      .log .sys {
+        color: #d1bb7a;
+      }
+      .log .info {
+        color: #8fc4ff;
+      }
+      .shop a {
+        display: block;
+        text-decoration: none;
+        color: #eee0ad;
+        background: #0d0f18;
+        border: 1px solid #2b3042;
+        border-radius: 8px;
+        padding: 8px;
+        margin-top: 6px;
+        font-size: 0.72rem;
+      }
+      .shop a small {
+        display: block;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .clinic-grid,
+      .records-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .upgrade,
+      .record {
+        background: linear-gradient(150deg, #1c2131, #10131d);
+        border: 1px solid #30384e;
+        border-radius: 12px;
+        padding: 13px;
+      }
+      .upgrade .icon {
+        font-size: 30px;
+      }
+      .upgrade h3,
+      .record h3 {
+        color: #fff0bd;
+        margin: 7px 0 4px;
+      }
+      .upgrade p,
+      .record p {
+        color: var(--muted);
+        font-size: 0.74rem;
+        line-height: 1.4;
+        min-height: 42px;
+      }
+      .level {
+        color: var(--teal);
+        font-size: 0.72rem;
+        margin-bottom: 8px;
+      }
+      .roster {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .staff {
+        text-align: center;
+        padding: 13px;
+        background: #111521;
+        border: 1px solid #30374a;
+        border-radius: 12px;
+      }
+      .staff .face {
+        font-size: 35px;
+      }
+      .staff b {
+        display: block;
+        color: #fff0bd;
+        margin-top: 5px;
+      }
+      .staff small {
+        color: var(--muted);
+        font-size: 0.67rem;
+      }
+      .staff.active {
+        border-color: var(--teal);
+        box-shadow: 0 0 20px #38d7c422;
+      }
+      .inventory {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+      .supply {
+        padding: 10px;
+        background: #0e111a;
+        border: 1px solid #2d3549;
+        border-radius: 9px;
+      }
+      .supply b {
+        display: block;
+        font-size: 0.77rem;
+      }
+      .supply span {
+        color: var(--gold);
+        font-size: 0.7rem;
+      }
+      .progress {
+        height: 7px;
+        background: #252a3b;
+        border-radius: 9px;
+        overflow: hidden;
+        margin: 5px 0;
+      }
+      .progress i {
+        height: 100%;
+        display: block;
+        background: var(--teal);
+      }
+      .settings {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .setting {
+        background: #0d1019;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #2c3346;
+      }
+      .setting label {
+        display: block;
+        color: #fff0b7;
+        font-size: 0.75rem;
+        margin-bottom: 7px;
+      }
+      .toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .surgeryOverlay,
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        background: #05060adf;
+        display: none;
+        place-items: center;
+        padding: 18px;
+      }
+      .surgeryOverlay.show,
+      .modal.show {
+        display: grid;
+      }
+      .surgery,
+      .modalbox {
+        width: min(620px, 100%);
+        background: #151927;
+        border: 2px solid var(--gold);
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 30px 80px #000;
+      }
+      .surgery h2,
+      .modalbox h2 {
+        margin: 0;
+        color: #fff0b8;
+      }
+      .opstage {
+        margin: 16px 0;
+        padding: 17px;
+        background: #090b12;
+        border-radius: 12px;
+      }
+      .opbuttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .stars {
+        color: var(--gold);
+        font-size: 1.35rem;
+      }
+      .toast {
+        position: fixed;
+        z-index: 90;
+        left: 50%;
+        bottom: 80px;
+        transform: translate(-50%, 25px);
+        opacity: 0;
+        background: #1a2030;
+        border: 1px solid var(--teal);
+        padding: 10px 14px;
+        border-radius: 10px;
+        transition: 0.25s;
+        pointer-events: none;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      .float {
+        position: fixed;
+        pointer-events: none;
+        font-weight: 800;
+        z-index: 50;
+        animation: float 1s forwards;
+      }
+      .pulseRed {
+        animation: alarm 0.75s infinite;
+      }
+      .bottomnav {
+        display: none;
+      }
+      @keyframes breathe {
+        50% {
+          transform: scale(1.035);
+        }
+      }
+      @keyframes float {
+        to {
+          transform: translateY(-55px);
+          opacity: 0;
+        }
+      }
+      @keyframes alarm {
+        50% {
+          box-shadow: inset 0 0 55px #ff334433;
+        }
+      }
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: 360px 1fr;
+        }
+        .right {
+          grid-column: 1/-1;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 760px) {
+        header {
+          padding: 8px 10px;
+        }
+        .brand small {
+          display: none;
+        }
+        .hud div:nth-child(3),
+        .hud div:nth-child(4) {
+          display: none;
+        }
+        .shell {
+          padding: 10px 10px 88px;
+        }
+        .tabs {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .right {
+          grid-column: auto;
+          display: flex;
+        }
+        .scene {
+          height: 145px;
+        }
+        .animal {
+          font-size: 78px;
+        }
+        .clinic-grid,
+        .records-grid,
+        .roster,
+        .inventory,
+        .settings {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .bottomnav {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          position: fixed;
+          z-index: 40;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 6px 5px calc(6px + env(safe-area-inset-bottom));
+          background: #0a0c15f5;
+          border-top: 1px solid #343a4e;
+        }
+        .bottomnav button {
+          font-size: 0.59rem;
+          padding: 7px 2px;
+          border: 0;
+          background: transparent;
+        }
+        .bottomnav button span {
+          display: block;
+          font-size: 18px;
+        }
+        .bottomnav button.active {
+          color: var(--gold);
+        }
+      }
+      .hospital-grid {
+        display: grid;
+        grid-template-columns: 320px 1fr 300px;
+        gap: 14px;
+      }
+      .queue-list,
+      .room-list {
+        display: grid;
+        gap: 8px;
+      }
+      .queue-patient,
+      .room {
+        padding: 10px;
+        border: 1px solid #343b50;
+        border-radius: 10px;
+        background: #0c0f18;
+      }
+      .queue-patient {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 9px;
+      }
+      .queue-patient .qicon {
+        font-size: 30px;
+      }
+      .queue-patient b,
+      .room b {
+        color: #fff0bd;
+        font-size: 0.78rem;
+      }
+      .queue-patient small,
+      .room small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.63rem;
+      }
+      .queue-patient.urgent {
+        border-color: var(--red);
+        animation: alarm 0.9s infinite;
+      }
+      .room.active {
+        border-color: var(--teal);
+        box-shadow: 0 0 18px #38d7c422;
+      }
+      .monitor {
+        background: #05080b;
+        border: 1px solid #24463f;
+        border-radius: 12px;
+        padding: 8px;
+      }
+      .monitor canvas {
+        display: block;
+        width: 100%;
+        height: 120px;
+      }
+      .monitor-values {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+      }
+      .monitor-values div {
+        background: #08100f;
+        padding: 6px;
+        border-radius: 6px;
+        text-align: center;
+        color: var(--green);
+        font:
+          700 0.72rem ui-monospace,
+          monospace;
+      }
+      .monitor-values small {
+        display: block;
+        color: #78918c;
+        font-size: 0.52rem;
+      }
+      .diff-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .diff-item {
+        padding: 6px 8px;
+        border-radius: 8px;
+        border: 1px solid #394057;
+        color: var(--muted);
+        font-size: 0.67rem;
+      }
+      .diff-item.likely {
+        border-color: var(--gold);
+        color: #ffeaa1;
+      }
+      .lab-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+      }
+      .skillbox {
+        margin-top: 10px;
+        padding: 12px;
+        background: #080a11;
+        border-radius: 10px;
+      }
+      .skilltrack {
+        height: 26px;
+        background: linear-gradient(
+          90deg,
+          #5c2730 0 30%,
+          #856c20 30% 44%,
+          #237653 44% 58%,
+          #856c20 58% 72%,
+          #5c2730 72%
+        );
+        border-radius: 7px;
+        position: relative;
+        overflow: hidden;
+      }
+      .skillneedle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: white;
+        box-shadow: 0 0 8px white;
+      }
+      .ward-map {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .ward-map .room {
+        min-height: 82px;
+        cursor: pointer;
+      }
+      .event-banner {
+        display: none;
+        padding: 10px;
+        border: 1px solid var(--orange);
+        background: #3a2414;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      .event-banner.show {
+        display: block;
+      }
+      .dialogue {
+        padding: 10px;
+        background: #151a28;
+        border-left: 3px solid var(--teal);
+        font-size: 0.72rem;
+        color: #dce5ef;
+        margin-top: 8px;
+      }
+      .chapter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        background: #0b0e17;
+        border-radius: 9px;
+      }
+      .chapter strong {
+        color: var(--gold);
+      }
+      .fatigue {
+        height: 5px;
+        background: #292e40;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+      .fatigue i {
+        display: block;
+        height: 100%;
+        background: var(--orange);
+      }
+      .handnote {
+        color: var(--teal);
+        font-size: 0.68rem;
+        margin-bottom: 7px;
+      }
+      @media (max-width: 1100px) {
+        .hospital-grid {
+          grid-template-columns: 300px 1fr;
+        }
+        .hospital-side {
+          grid-column: 1/-1;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+      }
+      @media (max-width: 760px) {
+        .hospital-grid {
+          grid-template-columns: 1fr;
+        }
+        .hospital-side {
+          grid-column: auto;
+          display: block;
+        }
+        .ward-map {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .lab-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+        .bottomnav {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="sigil">⚕</div>
+        <div><b>VET GODS</b><small>EMERGENCY CLINIC CAMPAIGN</small></div>
+      </div>
+      <div class="hud">
+        <div><b id="day">1</b><small>Day</small></div>
+        <div><b id="cash">$600</b><small>Funds</small></div>
+        <div><b id="rep">0</b><small>Reputation</small></div>
+        <div><b id="focus">8</b><small>Focus</small></div>
+      </div>
+    </header>
+    <main class="shell">
+      <nav class="tabs">
+        <button class="active" data-view="emergency">⚕ Emergency</button
+        ><button data-view="hospital">🗺 Live Hospital</button
+        ><button data-view="clinic">🏥 Clinic</button
+        ><button data-view="staff">👥 Staff</button
+        ><button data-view="records">📋 Records</button
+        ><button data-view="settings">⚙ Settings</button>
+      </nav>
+      <section id="emergency" class="view active">
+        <div class="grid">
+          <div class="stack">
+            <article class="panel patient" id="patientCard">
+              <div class="patient-top">
+                <h1 id="pname">
+                  Waiting Room<small>No patient admitted</small>
+                </h1>
+                <span class="badge" id="rarity">IDLE</span>
+              </div>
+              <div class="scene">
+                <div class="animal" id="animal">🏥</div>
+                <span class="species" id="species">Divine Paw Medical</span
+                ><span class="clock" id="clock">SHIFT 08:00</span>
+              </div>
+              <div class="casebody">
+                <div class="symptoms" id="symptoms">
+                  Admit a patient to begin. The diagnosis stays hidden until you
+                  commit.
+                </div>
+                <div class="meterline">
+                  <span>Clinical distress</span><b id="distressText">—</b>
+                </div>
+                <div class="meter">
+                  <i id="distressBar" style="width: 0"></i>
+                </div>
+                <div class="conditions" id="conditions"></div>
+                <div class="vitals" id="vitals"></div>
+              </div>
+            </article>
+            <div class="actions">
+              <button class="primary" id="admit">Admit Patient</button
+              ><button id="resolve" disabled>Resolve / Transfer</button
+              ><button class="ghost small" id="nextDay">End Shift</button>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <h2>1 · Assessment</h2>
+              <div class="assess" id="assess"></div>
+            </div>
+            <div class="panel">
+              <h2>2 · Commit Diagnosis</h2>
+              <div class="diagnose">
+                <select id="diagnosis">
+                  <option value="">Select suspected condition…</option></select
+                ><button id="commit" disabled>Commit</button>
+              </div>
+              <p class="sub" id="diagHint">
+                Tests consume focus and simulation time. A correct diagnosis
+                unlocks treatment synergy.
+              </p>
+            </div>
+            <div class="panel">
+              <h2>3 · Treatment Deck</h2>
+              <div class="deck" id="deck"></div>
+            </div>
+            <div class="panel">
+              <h2>Case Log</h2>
+              <div class="log" id="log" aria-live="polite"></div>
+            </div>
+          </div>
+          <aside class="stack right">
+            <div class="panel">
+              <h2>Clinical Brief</h2>
+              <div class="sub" id="brief">
+                Match symptoms, stabilize first, and use definitive care in the
+                proper order.
+              </div>
+            </div>
+            <div class="panel">
+              <h2>Shift Progress</h2>
+              <div class="sub">
+                <b id="shiftText">0 / 3 cases</b>
+                <div class="progress">
+                  <i id="shiftBar" style="width: 0"></i>
+                </div>
+                <span id="streak">Streak: 0</span>
+              </div>
+            </div>
+            <div class="panel shop">
+              <h2>Equipment Catalog</h2>
+              <div id="shop"></div>
+              <p class="sub">
+                Optional general supplies only. Simulation—not veterinary
+                advice.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section id="hospital" class="view">
+        <div class="event-banner" id="liveEvent"></div>
+        <div class="hospital-grid">
+          <div class="stack">
+            <div class="panel">
+              <div class="chapter">
+                <span>CHAPTER <strong id="liveChapter">1</strong></span
+                ><span id="bossLabel">Regular Shift</span>
+              </div>
+            </div>
+            <div class="panel">
+              <h2>Waiting Room Queue</h2>
+              <p class="sub">
+                Distress rises while patients wait. Choose who receives the next
+                room.
+              </p>
+              <div class="queue-list" id="liveQueue"></div>
+              <button id="addQueue" class="small" style="margin-top: 8px">
+                Receive Ambulance
+              </button>
+            </div>
+            <div class="panel">
+              <h2>Staff Status</h2>
+              <div id="liveStaff"></div>
+            </div>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <h2>Live Patient Monitor</h2>
+              <div class="monitor">
+                <canvas id="ecg" width="700" height="130"></canvas>
+                <div class="monitor-values">
+                  <div><small>HR</small><span id="mHR">—</span></div>
+                  <div><small>SpO₂</small><span id="mO2">—</span></div>
+                  <div><small>BP</small><span id="mBP">—</span></div>
+                  <div><small>TEMP</small><span id="mTemp">—</span></div>
+                </div>
+              </div>
+              <div class="dialogue" id="liveDialogue">
+                Assign a waiting patient to begin.
+              </div>
+            </div>
+            <div class="panel">
+              <h2>Differential Diagnosis</h2>
+              <div class="diff-list" id="liveDiff"></div>
+              <div class="lab-actions" id="liveTests"></div>
+            </div>
+            <div class="panel">
+              <h2>Tactical Hand · 5 Cards</h2>
+              <div class="handnote" id="handNote">
+                The hand redraws after every action. Chain stabilization cards
+                for bonuses.
+              </div>
+              <div class="deck" id="liveHand"></div>
+            </div>
+            <div class="panel">
+              <h2>Interactive Procedure</h2>
+              <p class="sub" id="skillPrompt">
+                Choose a treatment card to prepare a procedure.
+              </p>
+              <div class="skillbox">
+                <div class="skilltrack">
+                  <i class="skillneedle" id="skillNeedle"></i>
+                </div>
+                <button
+                  id="skillStop"
+                  class="primary"
+                  style="margin-top: 9px"
+                  disabled
+                >
+                  Perform Action
+                </button>
+              </div>
+            </div>
+          </div>
+          <aside class="stack hospital-side">
+            <div class="panel">
+              <h2>Hospital Rooms</h2>
+              <div class="ward-map" id="wardMap"></div>
+            </div>
+            <div class="panel">
+              <h2>Recovery Ward</h2>
+              <div id="recoveryList" class="sub">No recovering patients.</div>
+            </div>
+            <div class="panel">
+              <h2>Shift Objectives</h2>
+              <div id="liveObjectives" class="sub"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section id="clinic" class="view">
+        <div class="panel">
+          <h2>Clinic Development</h2>
+          <p class="sub">
+            Permanent upgrades improve focus, testing, surgery, monitoring and
+            rewards.
+          </p>
+          <div class="clinic-grid" id="upgrades"></div>
+        </div>
+        <div class="panel" style="margin-top: 14px">
+          <h2>Inventory</h2>
+          <div class="inventory" id="inventory"></div>
+        </div>
+      </section>
+      <section id="staff" class="view">
+        <div class="panel">
+          <h2>Staff Roster</h2>
+          <p class="sub">Choose one assistant per case.</p>
+          <div class="roster" id="roster"></div>
+        </div>
+      </section>
+      <section id="records" class="view">
+        <div class="panel">
+          <h2>Campaign Records</h2>
+          <div class="records-grid" id="recordCards"></div>
+        </div>
+        <div class="panel" style="margin-top: 14px">
+          <h2>Recent Cases</h2>
+          <div id="history" class="sub"></div>
+        </div>
+      </section>
+      <section id="settings" class="view">
+        <div class="panel">
+          <h2>Settings & Save</h2>
+          <div class="settings">
+            <div class="setting">
+              <label for="difficulty">Difficulty</label
+              ><select id="difficulty">
+                <option value="guided">Guided</option>
+                <option value="standard">Standard</option>
+                <option value="expert">Expert</option>
+              </select>
+            </div>
+            <div class="setting toggle">
+              <label>Sound effects</label><button id="sound">On</button>
+            </div>
+            <div class="setting toggle">
+              <label>Reduced motion</label><button id="motion">Off</button>
+            </div>
+            <div class="setting">
+              <label>Campaign Data</label>
+              <div class="actions">
+                <button id="export" class="small">Export</button
+                ><button id="reset" class="small bad">Reset</button>
+              </div>
+            </div>
+          </div>
+          <p class="sub">
+            Progress autosaves in this browser. In a real emergency, contact a
+            veterinarian.
+          </p>
+        </div>
+      </section>
+    </main>
+    <nav class="bottomnav">
+      <button class="active" data-view="emergency"><span>⚕</span>ER</button
+      ><button data-view="hospital"><span>🗺</span>Live</button
+      ><button data-view="clinic"><span>🏥</span>Clinic</button
+      ><button data-view="staff"><span>👥</span>Staff</button
+      ><button data-view="records"><span>📋</span>Records</button
+      ><button data-view="settings"><span>⚙</span>Settings</button>
+    </nav>
+    <div class="surgeryOverlay" id="surgeryOverlay">
+      <div class="surgery">
+        <h2>Operating Theatre</h2>
+        <p class="sub" id="opIntro"></p>
+        <div class="opstage">
+          <h3 id="opTitle"></h3>
+          <p id="opText" class="sub"></p>
+        </div>
+        <div class="opbuttons" id="opButtons"></div>
+      </div>
+    </div>
+    <div class="modal" id="modal">
+      <div class="modalbox">
+        <h2 id="modalTitle"></h2>
+        <div class="stars" id="stars"></div>
+        <p id="modalOutcome"></p>
+        <p class="sub" id="modalDetail"></p>
+        <div class="actions">
+          <button class="primary" id="modalClose">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script>
+      (() => {
+        "use strict";
+        const $ = (id) => document.getElementById(id),
+          rnd = (a) => a[Math.floor(Math.random() * a.length)],
+          clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+        const CASES = [
+          {
+            id: "gdv",
+            dx: "Gastric dilatation-volvulus",
+            sp: ["Great Dane", "German Shepherd", "Standard Poodle"],
+            ic: "🐕",
+            sign: "Restless, unproductive retching, with a rapidly distending abdomen.",
+            brief:
+              "A time-critical surgical emergency. Stabilization should precede intervention.",
+            d: 79,
+            v: [
+              "103.0°F",
+              "184 weak",
+              "50 labored",
+              "pale / muddy",
+              ">3 sec",
+              "severe abdomen",
+            ],
+            tests: ["pulse", "gums", "abdomen"],
+            seq: ["oxygen", "fluids", "analgesia", "procedure"],
+            harm: ["feed", "walk", "cool"],
+          },
+          {
+            id: "heat",
+            dx: "Heatstroke",
+            sp: ["Bulldog", "Pug", "Labrador"],
+            ic: "🐶",
+            sign: "Collapsed after heat exposure, frantic panting, bright-red tongue and glassy eyes.",
+            brief: "Controlled cooling and stabilization are urgent.",
+            d: 73,
+            v: [
+              "106.4°F",
+              "170",
+              "82 pant",
+              "brick red",
+              "<1 sec",
+              "disoriented",
+            ],
+            tests: ["temperature", "resp", "gums"],
+            seq: ["oxygen", "cool", "fluids", "monitor"],
+            harm: ["procedure", "feed"],
+          },
+          {
+            id: "block",
+            dx: "Urethral obstruction",
+            sp: ["Domestic Shorthair", "Maine Coon", "Siamese"],
+            ic: "🐈‍⬛",
+            sign: "Repeated litter-box visits, vocalizing, licking, and a tense lower belly.",
+            brief:
+              "Obstruction requires stabilization, pain relief and definitive care.",
+            d: 71,
+            v: [
+              "99.3°F",
+              "218",
+              "46",
+              "tacky pink",
+              "2.5 sec",
+              "severe caudal",
+            ],
+            tests: ["history", "pulse", "abdomen"],
+            seq: ["fluids", "analgesia", "procedure", "monitor"],
+            harm: ["feed", "walk", "cool"],
+          },
+          {
+            id: "bleed",
+            dx: "Traumatic hemorrhage",
+            sp: ["Shepherd mix", "Border Collie", "Terrier"],
+            ic: "🐕‍🦺",
+            sign: "A jagged limb wound is soaking the fur; the patient is weak and frightened.",
+            brief: "Control external bleeding before lengthy examination.",
+            d: 61,
+            v: ["100.5°F", "154 weak", "38", "pale pink", "3 sec", "limb 8/10"],
+            tests: ["pulse", "gums", "pain"],
+            seq: ["pressure", "fluids", "analgesia", "procedure"],
+            harm: ["feed", "walk"],
+          },
+          {
+            id: "stasis",
+            dx: "Gastrointestinal stasis",
+            sp: ["Lionhead Rabbit", "Mini Lop", "Rex Rabbit"],
+            ic: "🐰",
+            sign: "Hunched and refusing hay, with no fecal pellets since the prior evening.",
+            brief:
+              "Warmth, fluids, pain management and nutritional support form a chain.",
+            d: 63,
+            v: ["99.0°F", "278", "68", "pale", "2 sec", "abdominal guarding"],
+            tests: ["temperature", "abdomen", "history"],
+            seq: ["warm", "fluids", "analgesia", "feed"],
+            harm: ["cool", "walk", "procedure"],
+          },
+          {
+            id: "birdresp",
+            dx: "Avian respiratory distress",
+            sp: ["Green-cheek Conure", "Cockatiel", "Budgerigar"],
+            ic: "🦜",
+            sign: "Tail bobbing and open-mouth breathing; fluffed and sitting low on the perch.",
+            brief:
+              "Minimize handling. Oxygen, warmth and quiet precede investigation.",
+            d: 82,
+            v: [
+              "not taken",
+              "too rapid",
+              "open-mouth",
+              "not assessed",
+              "—",
+              "air hunger",
+            ],
+            tests: ["resp", "history"],
+            seq: ["quiet", "oxygen", "warm", "monitor"],
+            harm: ["cool", "walk", "procedure"],
+          },
+          {
+            id: "colic",
+            dx: "Acute equine colic",
+            sp: ["Quarter Horse", "Arabian", "Thoroughbred"],
+            ic: "🐴",
+            sign: "Pawing, flank-watching, sweating, and repeatedly attempting to lie down.",
+            brief: "Assess severity, control pain and support perfusion.",
+            d: 69,
+            v: [
+              "100.8°F",
+              "66 high",
+              "28",
+              "tacky",
+              "2.5 sec",
+              "visceral 8/10",
+            ],
+            tests: ["pulse", "gums", "abdomen"],
+            seq: ["analgesia", "fluids", "walk", "monitor"],
+            harm: ["feed", "cool"],
+          },
+          {
+            id: "poison",
+            dx: "Toxin ingestion",
+            sp: ["Beagle", "Cocker Spaniel", "Mixed Breed"],
+            ic: "🦮",
+            sign: "Trembling and pacing after vomiting material containing torn packaging.",
+            brief:
+              "Exposure history and time matter; decontamination is conditional.",
+            d: 57,
+            v: ["103.2°F", "174", "42", "injected", "1.5 sec", "nauseated"],
+            tests: ["history", "pulse", "temperature"],
+            seq: ["historycard", "decontam", "fluids", "monitor"],
+            harm: ["feed", "walk"],
+          },
+          {
+            id: "parvo",
+            dx: "Severe infectious gastroenteritis",
+            sp: ["Mixed puppy", "Rottweiler puppy", "Shelter puppy"],
+            ic: "🐾",
+            sign: "Profuse vomiting and bloody diarrhea with collapse and sunken eyes.",
+            brief: "Isolation and aggressive supportive care are central.",
+            d: 85,
+            v: [
+              "104.1°F",
+              "192 thready",
+              "45",
+              "very pale / dry",
+              "3 sec",
+              "abdominal",
+            ],
+            tests: ["gums", "pulse", "history"],
+            seq: ["isolate", "fluids", "warm", "monitor"],
+            harm: ["walk", "procedure"],
+          },
+          {
+            id: "trauma",
+            dx: "Polytrauma with shock",
+            sp: ["Domestic Shorthair", "Tabby", "Tortoiseshell"],
+            ic: "🐱",
+            sign: "Open-mouth breathing, cold extremities, and a hind limb held abnormally.",
+            brief: "Treat life threats before the obvious fracture.",
+            d: 84,
+            v: [
+              "97.7°F",
+              "238",
+              "66 open-mouth",
+              "white-pink",
+              "3 sec",
+              "pelvis / limb",
+            ],
+            tests: ["resp", "gums", "pulse"],
+            seq: ["oxygen", "warm", "fluids", "analgesia"],
+            harm: ["walk", "feed", "cool"],
+          },
+          {
+            id: "seizure",
+            dx: "Active seizure emergency",
+            sp: ["Border Collie", "Domestic Shorthair", "Cockapoo"],
+            ic: "🐕",
+            sign: "Recurrent convulsions with incomplete recovery and rising temperature.",
+            brief: "Protect the airway and stop prolonged seizure activity.",
+            d: 78,
+            v: ["104.0°F", "188", "58", "pink", "2 sec", "unresponsive"],
+            tests: ["temperature", "history", "resp"],
+            seq: ["quiet", "oxygen", "medication", "monitor"],
+            harm: ["feed", "walk"],
+          },
+          {
+            id: "anaphylaxis",
+            dx: "Anaphylactic shock",
+            sp: ["Labrador", "Boxer", "Domestic Shorthair"],
+            ic: "🐶",
+            sign: "Sudden facial swelling, vomiting, weakness and difficult breathing after a sting.",
+            brief: "Airway and circulation are threatened together.",
+            d: 88,
+            v: [
+              "101.8°F",
+              "210 weak",
+              "70 labored",
+              "pale",
+              "3 sec",
+              "distressed",
+            ],
+            tests: ["resp", "gums", "history"],
+            seq: ["oxygen", "medication", "fluids", "monitor"],
+            harm: ["feed", "walk"],
+          },
+        ];
+        const NAMES = [
+            "Brutus",
+            "Sunny",
+            "Shadow",
+            "Nix",
+            "Clover",
+            "Kiwi",
+            "Maple",
+            "Biscuit",
+            "Pip",
+            "Ash",
+            "Nova",
+            "Mochi",
+            "Atlas",
+            "Luna",
+            "Pepper",
+            "Echo",
+            "Willow",
+            "Scout",
+            "Ollie",
+            "Sage",
+          ],
+          TESTS = [
+            { id: "temperature", n: "Temperature", c: 1, m: 3, r: [0] },
+            { id: "pulse", n: "Pulse / Heart", c: 1, m: 3, r: [1] },
+            { id: "resp", n: "Respiratory Rate", c: 1, m: 2, r: [2] },
+            { id: "gums", n: "Gums / CRT", c: 1, m: 2, r: [3, 4] },
+            { id: "pain", n: "Pain Exam", c: 1, m: 4, r: [5] },
+            { id: "abdomen", n: "Abdominal Exam", c: 1, m: 4, r: [5] },
+            { id: "history", n: "Owner History", c: 1, m: 3, r: [] },
+          ];
+        const CARDS = [
+          {
+            id: "oxygen",
+            n: "Oxygen Support",
+            d: "Support airway and breathing.",
+            s: "oxygen",
+          },
+          {
+            id: "fluids",
+            n: "Fluid Support",
+            d: "Support circulating volume.",
+            s: "fluids",
+          },
+          {
+            id: "analgesia",
+            n: "Pain Management",
+            d: "Reduce pain and stress.",
+            s: "meds",
+          },
+          {
+            id: "procedure",
+            n: "Definitive Procedure",
+            d: "Open the operating theatre.",
+            s: "surgery",
+            op: 1,
+          },
+          {
+            id: "pressure",
+            n: "Pressure Bandage",
+            d: "Control external bleeding.",
+            s: "bandage",
+          },
+          {
+            id: "cool",
+            n: "Controlled Cooling",
+            d: "Lower dangerous temperature.",
+            s: "cooling",
+          },
+          {
+            id: "warm",
+            n: "Active Warming",
+            d: "Correct dangerous hypothermia.",
+            s: "warming",
+          },
+          {
+            id: "decontam",
+            n: "Decontamination",
+            d: "Limit selected toxin exposure.",
+            s: "meds",
+          },
+          {
+            id: "feed",
+            n: "Nutritional Support",
+            d: "Species-appropriate support.",
+            s: "nutrition",
+          },
+          {
+            id: "quiet",
+            n: "Low-Stress Chamber",
+            d: "Dark, warm and minimally handled.",
+            s: "oxygen",
+          },
+          {
+            id: "walk",
+            n: "Controlled Movement",
+            d: "Only when specifically indicated.",
+            s: "general",
+          },
+          {
+            id: "monitor",
+            n: "Continuous Monitoring",
+            d: "Watch trends and recovery.",
+            s: "general",
+          },
+          {
+            id: "isolate",
+            n: "Isolation Protocol",
+            d: "Protect the ward from infection.",
+            s: "general",
+          },
+          {
+            id: "historycard",
+            n: "Exposure Reconstruction",
+            d: "Confirm substance and timing.",
+            s: "general",
+          },
+          {
+            id: "medication",
+            n: "Emergency Medication",
+            d: "Condition-specific hospital drug.",
+            s: "meds",
+          },
+        ];
+        const UPG = [
+            {
+              id: "er",
+              i: "🚑",
+              n: "Emergency Ward",
+              d: "Adds starting focus.",
+              c: 260,
+            },
+            {
+              id: "lab",
+              i: "🔬",
+              n: "Diagnostic Lab",
+              d: "Tests take less time.",
+              c: 300,
+            },
+            {
+              id: "or",
+              i: "🩺",
+              n: "Surgical Center",
+              d: "Improves procedure safety.",
+              c: 420,
+            },
+            {
+              id: "icu",
+              i: "🫀",
+              n: "ICU Monitoring",
+              d: "Slows deterioration.",
+              c: 360,
+            },
+            {
+              id: "pharmacy",
+              i: "💊",
+              n: "Pharmacy",
+              d: "Adds shift supplies.",
+              c: 280,
+            },
+            {
+              id: "outreach",
+              i: "📣",
+              n: "Community Trust",
+              d: "Increases rewards.",
+              c: 240,
+            },
+          ],
+          STAFF = [
+            {
+              id: "mara",
+              face: "👩🏽‍⚕️",
+              n: "Dr. Mara",
+              role: "Surgeon",
+              bonus: "procedure",
+            },
+            {
+              id: "finn",
+              face: "🧑🏻‍⚕️",
+              n: "Finn",
+              role: "ER Technician",
+              bonus: "stabilization",
+            },
+            {
+              id: "iya",
+              face: "👩🏿‍🔬",
+              n: "Iya",
+              role: "Lab Specialist",
+              bonus: "testing",
+            },
+            {
+              id: "rowan",
+              face: "🧑🏼‍⚕️",
+              n: "Rowan",
+              role: "Critical Care",
+              bonus: "monitoring",
+            },
+          ];
+        const DEF = {
+          day: 1,
+          cash: 600,
+          rep: 0,
+          focus: 8,
+          saved: 0,
+          lost: 0,
+          total: 0,
+          streak: 0,
+          best: 0,
+          shift: 0,
+          difficulty: "standard",
+          sound: true,
+          motion: false,
+          upgrades: { er: 0, lab: 0, or: 0, icu: 0, pharmacy: 0, outreach: 0 },
+          supplies: {
+            oxygen: 8,
+            fluids: 8,
+            meds: 8,
+            surgery: 5,
+            bandage: 7,
+            cooling: 6,
+            warming: 6,
+            nutrition: 5,
+            general: 20,
+          },
+          staff: "finn",
+          history: [],
+        };
+        let save;
+        try {
+          save = {
+            ...DEF,
+            ...JSON.parse(localStorage.getItem("vetGodsCampaign") || "{}"),
+          };
+          save.upgrades = { ...DEF.upgrades, ...save.upgrades };
+          save.supplies = { ...DEF.supplies, ...save.supplies };
+        } catch (e) {
+          save = structuredClone(DEF);
+        }
+        let game = {
+          p: null,
+          revealed: new Set(),
+          used: new Set(),
+          played: [],
+          diagnosed: false,
+          correct: false,
+          minutes: 480,
+          log: [],
+          resolved: false,
+        };
+        const diff = () =>
+          ({
+            guided: { tick: 0.6, hint: 1, reward: 1 },
+            standard: { tick: 1, hint: 0, reward: 1.15 },
+            expert: { tick: 1.45, hint: 0, reward: 1.4 },
+          })[save.difficulty];
+        function persist() {
+          localStorage.setItem("vetGodsCampaign", JSON.stringify(save));
+          hud();
+        }
+        function beep(t = "tap") {
+          if (!save.sound) return;
+          try {
+            let a = new AudioContext(),
+              o = a.createOscillator(),
+              g = a.createGain();
+            o.connect(g);
+            g.connect(a.destination);
+            o.frequency.value = t === "good" ? 640 : t === "bad" ? 150 : 340;
+            g.gain.setValueAtTime(0.045, a.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, a.currentTime + 0.12);
+            o.start();
+            o.stop(a.currentTime + 0.12);
+          } catch (e) {}
+        }
+        function log(t, c = "sys") {
+          game.log.unshift(`<div class="${c}">${t}</div>`);
+          $("log").innerHTML = game.log.slice(0, 50).join("");
+        }
+        function toast(t) {
+          $("toast").textContent = t;
+          $("toast").classList.add("show");
+          setTimeout(() => $("toast").classList.remove("show"), 1500);
+        }
+        function fly(t, good = 1) {
+          let e = document.createElement("div");
+          e.className = "float";
+          e.textContent = t;
+          e.style.color = good ? "var(--green)" : "var(--red)";
+          e.style.left = "45%";
+          e.style.top = "43%";
+          document.body.append(e);
+          setTimeout(() => e.remove(), 1000);
+        }
+        function hud() {
+          $("day").textContent = save.day;
+          $("cash").textContent = "$" + save.cash;
+          $("rep").textContent = save.rep;
+          $("focus").textContent = save.focus;
+          $("difficulty").value = save.difficulty;
+          $("sound").textContent = save.sound ? "On" : "Off";
+          $("motion").textContent = save.motion ? "On" : "Off";
+        }
+        function patient() {
+          let p = structuredClone(rnd(CASES));
+          p.name = rnd(NAMES);
+          p.spec = rnd(p.sp);
+          p.age = rnd(["young", "adult", "senior"]);
+          p.weight = rnd(["underweight", "ideal weight", "overweight"]);
+          p.d = clamp(p.d + rnd([-6, -3, 0, 3, 6]), 35, 94);
+          return p;
+        }
+        function admit() {
+          if (
+            game.p &&
+            !game.resolved &&
+            !confirm("Transfer the current patient?")
+          )
+            return;
+          if (game.p && !game.resolved)
+            finish(0, "Transferred before stabilization.");
+          game = {
+            p: patient(),
+            revealed: new Set(),
+            used: new Set(),
+            played: [],
+            diagnosed: false,
+            correct: false,
+            minutes: 480 + save.shift * 55,
+            log: [],
+            resolved: false,
+          };
+          save.focus = 8 + save.upgrades.er;
+          log(
+            `Admitted ${game.p.name}, ${game.p.age}, ${game.p.spec}. Distress ${game.p.d}.`,
+          );
+          log("Diagnosis concealed. Begin assessment.", "info");
+          render();
+          beep();
+        }
+        function advance(m) {
+          if (!game.p || game.resolved) return;
+          game.minutes += m;
+          let mitigation =
+              save.upgrades.icu * 0.12 + (save.staff === "rowan" ? 0.12 : 0),
+            rate =
+              diff().tick *
+              (game.p.d >= 80 ? 1.6 : game.p.d >= 60 ? 1 : 0.55) *
+              (1 - mitigation);
+          game.p.d = clamp(game.p.d + Math.ceil((m / 4) * rate), 0, 100);
+          $("patientCard").classList.toggle("pulseRed", game.p.d >= 90);
+          if (game.p.d >= 100)
+            finish(0, "The patient decompensated before stabilization.");
+        }
+        function assess(id) {
+          let t = TESTS.find((x) => x.id === id);
+          if (!game.p || game.revealed.has(id) || save.focus < t.c) return;
+          save.focus -= t.c;
+          game.revealed.add(id);
+          t.r.forEach((x) => game.revealed.add("v" + x));
+          let m = Math.max(
+            1,
+            t.m - save.upgrades.lab - (save.staff === "iya" ? 1 : 0),
+          );
+          advance(m);
+          log(
+            `${t.n}: ${t.r.length ? t.r.map((i) => game.p.v[i]).join(" · ") : "history supports focused differentials"}.`,
+            "ok",
+          );
+          render();
+          beep();
+        }
+        function commit() {
+          if (!game.p || game.diagnosed) return;
+          game.diagnosed = true;
+          game.correct = $("diagnosis").value === game.p.id;
+          if (game.correct) {
+            save.rep += 6;
+            game.p.d = clamp(game.p.d - 5, 0, 100);
+            log(`Diagnosis confirmed: ${game.p.dx}. Synergy active.`, "ok");
+            toast("Correct diagnosis · synergy unlocked");
+            beep("good");
+          } else {
+            game.p.d = clamp(game.p.d + 8, 0, 100);
+            log(
+              `Working diagnosis incorrect. Actual condition: ${game.p.dx}.`,
+              "no",
+            );
+            beep("bad");
+          }
+          render();
+        }
+        function quality(id) {
+          let i = game.p.seq.indexOf(id);
+          if (i < 0) return game.p.harm.includes(id) ? "harm" : "neutral";
+          return game.p.seq.slice(0, i).every((x) => game.played.includes(x))
+            ? "best"
+            : "early";
+        }
+        function play(id) {
+          let c = CARDS.find((x) => x.id === id);
+          if (!game.p || game.used.has(id) || !game.diagnosed) return;
+          if ((save.supplies[c.s] || 0) <= 0)
+            return toast("Supply depleted — restock at Clinic");
+          game.used.add(id);
+          save.supplies[c.s]--;
+          save.focus = Math.max(0, save.focus - 1);
+          let q = quality(id);
+          game.played.push(id);
+          if (q === "best") {
+            let d =
+              13 +
+              (game.correct ? 4 : 0) +
+              (save.staff === "finn" &&
+              ["oxygen", "fluids", "pressure", "warm"].includes(id)
+                ? 3
+                : 0);
+            game.p.d = clamp(game.p.d - d, 0, 100);
+            save.rep += 3;
+            log(`▶ ${c.n}: correct sequence (−${d} distress).`, "ok");
+            fly("−" + d);
+            beep("good");
+          } else if (q === "early") {
+            game.p.d = clamp(game.p.d - 4, 0, 100);
+            log(
+              `▶ ${c.n}: indicated, but earlier steps were skipped.`,
+              "info",
+            );
+            fly("−4");
+          } else if (q === "harm") {
+            game.p.d = clamp(game.p.d + 15, 0, 100);
+            save.rep = Math.max(0, save.rep - 3);
+            log(`▶ ${c.n}: contraindicated (+15 distress).`, "no");
+            fly("+15", 0);
+            beep("bad");
+          } else {
+            game.p.d = clamp(game.p.d + 5, 0, 100);
+            log(`▶ ${c.n}: not indicated (+5 distress).`, "no");
+            fly("+5", 0);
+          }
+          advance(4);
+          if (c.op && q !== "harm" && game.p) startOp();
+          render();
+          persist();
+        }
+        const OPS = [
+          {
+            t: "Preparation",
+            x: "Choose the safest preparation.",
+            a: [
+              "Stabilize and confirm checklist",
+              "Proceed immediately",
+              "Skip monitoring",
+            ],
+            ok: 0,
+          },
+          {
+            t: "Anesthesia",
+            x: "The monitor shows falling pressure.",
+            a: [
+              "Increase risk blindly",
+              "Pause and support circulation",
+              "Ignore it",
+            ],
+            ok: 1,
+          },
+          {
+            t: "Hemostasis",
+            x: "Bleeding obscures the field.",
+            a: [
+              "Apply controlled hemostasis",
+              "Continue blindly",
+              "End monitoring",
+            ],
+            ok: 0,
+          },
+          {
+            t: "Closure & Recovery",
+            x: "Select the safest final step.",
+            a: [
+              "Wake immediately",
+              "Count materials, close, monitor",
+              "Discharge now",
+            ],
+            ok: 1,
+          },
+        ];
+        let op = { stage: 0, score: 0 };
+        function startOp() {
+          op = { stage: 0, score: 0 };
+          $("surgeryOverlay").classList.add("show");
+          $("opIntro").textContent =
+            `${game.p.name} · ${game.p.dx}. Complete four theatre decisions.`;
+          renderOp();
+        }
+        function renderOp() {
+          let s = OPS[op.stage];
+          $("opTitle").textContent = `${op.stage + 1}/4 · ${s.t}`;
+          $("opText").textContent = s.x;
+          $("opButtons").innerHTML = s.a
+            .map((a, i) => `<button data-op="${i}">${a}</button>`)
+            .join("");
+        }
+        function opPick(i) {
+          let s = OPS[op.stage];
+          if (i === s.ok) {
+            op.score++;
+            beep("good");
+          } else beep("bad");
+          if (++op.stage < OPS.length) return renderOp();
+          $("surgeryOverlay").classList.remove("show");
+          let d =
+            op.score * 3 +
+            save.upgrades.or * 2 +
+            (save.staff === "mara" ? 4 : 0);
+          game.p.d = clamp(game.p.d - d, 0, 100);
+          log(
+            `Theatre complete: ${op.score}/4 safe decisions (−${d} distress).`,
+            op.score >= 3 ? "ok" : "no",
+          );
+          toast(`Surgery score ${op.score}/4`);
+          render();
+        }
+        function finish(win, reason) {
+          if (!game.p) return;
+          let p = game.p;
+          if (win === undefined) win = p.d <= 64;
+          if (p.d >= 65) win = 0;
+          let stars = win ? (p.d <= 20 ? 5 : p.d <= 35 ? 4 : 3) : 1,
+            reward = win
+              ? Math.round(
+                  (90 + stars * 35) *
+                    diff().reward *
+                    (1 + save.upgrades.outreach * 0.12),
+                )
+              : 0;
+          if (win) {
+            save.saved++;
+            save.streak++;
+            save.best = Math.max(save.best, save.streak);
+            save.cash += reward;
+            save.rep += stars * 3;
+          } else {
+            save.lost++;
+            save.streak = 0;
+            save.rep = Math.max(0, save.rep - 10);
+          }
+          save.total++;
+          save.shift++;
+          save.history.unshift({
+            name: p.name,
+            dx: p.dx,
+            win,
+            stars,
+            day: save.day,
+            d: p.d,
+          });
+          save.history = save.history.slice(0, 20);
+          game.resolved = true;
+          $("modalTitle").textContent = win
+            ? "Patient Stabilized"
+            : "Critical Transfer";
+          $("stars").textContent = "★".repeat(stars) + "☆".repeat(5 - stars);
+          $("modalOutcome").textContent = win
+            ? `${p.name} is ready for ${p.d <= 35 ? "recovery" : "specialist transfer"}. +$${reward}`
+            : `${p.name} could not be stabilized in time.`;
+          $("modalDetail").textContent =
+            `${reason || "Case resolved."} Condition: ${p.dx}. Protocol: ${p.seq.map((x) => CARDS.find((c) => c.id === x)?.n || x).join(" → ")}.`;
+          $("modal").classList.add("show");
+          persist();
+          render();
+        }
+        function vitalHTML() {
+          if (!game.p) return "";
+          let names = [
+            "Temperature",
+            "Heart Rate",
+            "Respiration",
+            "Gums",
+            "CRT",
+            "Pain / Exam",
+          ];
+          return names
+            .map((n, i) => {
+              let shown = game.revealed.has("v" + i),
+                raw = game.p.v[i],
+                bad =
+                  /106|104|97\.|weak|thready|open-mouth|white|muddy|3 sec|severe|unresponsive/i.test(
+                    raw,
+                  ),
+                warn = /103|99\.|tacky|pale|2.5|high|distress/i.test(raw);
+              return `<div class="vital ${shown ? (bad ? "bad" : warn ? "warn" : "") : "hidden"}"><span>${n}</span><b>${shown ? raw : "UNKNOWN"}</b></div>`;
+            })
+            .join("");
+        }
+        function renderPatient() {
+          let p = game.p;
+          if (!p) {
+            $("pname").innerHTML =
+              "Waiting Room<small>No patient admitted</small>";
+            $("animal").textContent = "🏥";
+            $("species").textContent = "Divine Paw Medical";
+            $("rarity").textContent = "IDLE";
+            $("symptoms").textContent =
+              "Admit a patient to begin. The diagnosis stays hidden until you commit.";
+            $("distressBar").style.width = "0";
+            $("distressText").textContent = "—";
+            $("vitals").innerHTML = "";
+            $("conditions").innerHTML = "";
+            return;
+          }
+          $("pname").innerHTML =
+            `${p.name}<small>${game.diagnosed ? p.dx : "DIAGNOSIS UNKNOWN"}</small>`;
+          $("animal").textContent = p.ic;
+          $("species").textContent = `${p.age} · ${p.spec} · ${p.weight}`;
+          $("rarity").textContent =
+            p.d >= 82 ? "MYTHIC" : p.d >= 70 ? "LEGENDARY" : "RARE";
+          $("symptoms").textContent = p.sign;
+          $("distressBar").style.width = p.d + "%";
+          $("distressBar").style.background =
+            p.d >= 75
+              ? "var(--red)"
+              : p.d >= 45
+                ? "var(--orange)"
+                : "var(--green)";
+          $("distressText").textContent =
+            `${p.d}/100 · ${p.d >= 85 ? "CRASHING" : p.d >= 65 ? "CRITICAL" : p.d >= 40 ? "UNSTABLE" : "STABLE"}`;
+          $("clock").textContent =
+            `SHIFT ${String(Math.floor(game.minutes / 60)).padStart(2, "0")}:${String(game.minutes % 60).padStart(2, "0")}`;
+          $("vitals").innerHTML = vitalHTML();
+          $("conditions").innerHTML = [
+            p.d >= 75 ? "Shock risk" : "Under observation",
+            game.diagnosed ? "Diagnosis committed" : "Undiagnosed",
+            ...game.played
+              .slice(-2)
+              .map((x) => CARDS.find((c) => c.id === x).n),
+          ]
+            .map(
+              (x, i) =>
+                `<span class="chip ${i === 0 && p.d >= 75 ? "danger" : ""}">${x}</span>`,
+            )
+            .join("");
+          $("brief").textContent = game.diagnosed
+            ? p.brief
+            : diff().hint
+              ? `Guided hint: prioritize ${p.tests.join(", ")}.`
+              : "Reveal focused vitals and commit before treatment.";
+        }
+        function renderActions() {
+          $("assess").innerHTML = TESTS.map(
+            (t) =>
+              `<button data-test="${t.id}" ${!game.p || game.revealed.has(t.id) || save.focus < t.c || game.resolved ? "disabled" : ""}>${t.n}<small style="display:block;color:var(--muted)">−${t.c} focus · ${Math.max(1, t.m - save.upgrades.lab)}m</small></button>`,
+          ).join("");
+          $("commit").disabled =
+            !game.p || game.diagnosed || !$("diagnosis").value;
+          $("resolve").disabled = !game.p || game.resolved;
+          $("deck").innerHTML = CARDS.map((c) => {
+            let used = game.used.has(c.id),
+              stock = save.supplies[c.s] || 0,
+              next =
+                game.p &&
+                game.p.seq.find((x) => !game.played.includes(x)) === c.id;
+            return `<div class="card ${used ? "used" : ""} ${!game.diagnosed ? "locked" : ""} ${next && game.correct ? "combo" : ""}" data-card="${c.id}"><span class="cost">${stock}</span><h4>${c.n}</h4><p>${c.d}${next && game.correct ? " · COMBO READY" : ""}</p></div>`;
+          }).join("");
+        }
+        function renderClinic() {
+          $("upgrades").innerHTML = UPG.map((u) => {
+            let l = save.upgrades[u.id],
+              cost = u.c * (l + 1);
+            return `<div class="upgrade"><div class="icon">${u.i}</div><h3>${u.n}</h3><div class="level">Level ${l} / 3</div><p>${u.d}</p><button data-up="${u.id}" ${l >= 3 || save.cash < cost ? "disabled" : ""}>${l >= 3 ? "MAX" : "Upgrade $" + cost}</button></div>`;
+          }).join("");
+          $("inventory").innerHTML = Object.entries(save.supplies)
+            .map(
+              ([k, v]) =>
+                `<div class="supply"><b>${k[0].toUpperCase() + k.slice(1)}</b><span>${v} units</span><button class="small" data-buy="${k}" ${save.cash < 35 ? "disabled" : ""}>Restock $35</button></div>`,
+            )
+            .join("");
+        }
+        function renderStaff() {
+          $("roster").innerHTML = STAFF.map(
+            (s) =>
+              `<div class="staff ${save.staff === s.id ? "active" : ""}"><div class="face">${s.face}</div><b>${s.n}</b><small>${s.role}<br>Bonus: ${s.bonus}</small><button class="small" data-staff="${s.id}" ${save.staff === s.id ? "disabled" : ""}>${save.staff === s.id ? "Assigned" : "Assign"}</button></div>`,
+          ).join("");
+        }
+        function renderRecords() {
+          $("recordCards").innerHTML = [
+            ["Cases", save.total],
+            ["Stabilized", save.saved],
+            ["Critical transfers", save.lost],
+            ["Best streak", save.best],
+            ["Reputation", save.rep],
+            [
+              "Clinic upgrades",
+              Object.values(save.upgrades).reduce((a, b) => a + b, 0),
+            ],
+          ]
+            .map(
+              (x) => `<div class="record"><h3>${x[1]}</h3><p>${x[0]}</p></div>`,
+            )
+            .join("");
+          $("history").innerHTML = save.history.length
+            ? save.history
+                .map(
+                  (h) =>
+                    `<div style="padding:8px;border-bottom:1px solid #292f42">Day ${h.day} · ${h.name} · ${h.dx} — <b style="color:${h.win ? "var(--green)" : "var(--red)"}">${h.win ? "stabilized" : "transferred"}</b> · ${h.d}/100</div>`,
+                )
+                .join("")
+            : "No completed cases yet.";
+        }
+        function shop() {
+          let x = [
+            [
+              "Pet first-aid kit",
+              "https://www.amazon.com/s?k=pet+first+aid+kit",
+            ],
+            [
+              "Digital pet thermometer",
+              "https://www.amazon.com/s?k=pet+thermometer",
+            ],
+            [
+              "Locate emergency veterinarian",
+              "https://www.google.com/search?q=emergency+veterinarian+near+me",
+            ],
+          ];
+          $("shop").innerHTML = x
+            .map(
+              (a) =>
+                `<a href="${a[1]}" target="_blank" rel="noopener">${a[0]}<small>External search · opens new tab</small></a>`,
+            )
+            .join("");
+        }
+        function render() {
+          hud();
+          renderPatient();
+          renderActions();
+          renderClinic();
+          renderStaff();
+          renderRecords();
+          shop();
+          $("shiftText").textContent = `${save.shift} / 3 cases`;
+          $("shiftBar").style.width =
+            Math.min(100, (save.shift / 3) * 100) + "%";
+          $("streak").textContent =
+            `Streak: ${save.streak} · Best: ${save.best}`;
+          persist();
+        }
+        function nav(v) {
+          document
+            .querySelectorAll(".view")
+            .forEach((x) => x.classList.toggle("active", x.id === v));
+          document
+            .querySelectorAll("[data-view]")
+            .forEach((x) => x.classList.toggle("active", x.dataset.view === v));
+          scrollTo({ top: 0, behavior: save.motion ? "auto" : "smooth" });
+        }
+        document.addEventListener("click", (e) => {
+          let v = e.target.closest("[data-view]");
+          if (v) nav(v.dataset.view);
+          let t = e.target.closest("[data-test]");
+          if (t) assess(t.dataset.test);
+          let c = e.target.closest("[data-card]");
+          if (c) play(c.dataset.card);
+          let u = e.target.closest("[data-up]");
+          if (u) {
+            let x = UPG.find((q) => q.id === u.dataset.up),
+              cost = x.c * (save.upgrades[x.id] + 1);
+            if (save.cash >= cost) {
+              save.cash -= cost;
+              save.upgrades[x.id]++;
+              toast(x.n + " upgraded");
+              render();
+            }
+          }
+          let b = e.target.closest("[data-buy]");
+          if (b && save.cash >= 35) {
+            save.cash -= 35;
+            save.supplies[b.dataset.buy] += 5;
+            render();
+            toast("Supplies restocked");
+          }
+          let s = e.target.closest("[data-staff]");
+          if (s) {
+            save.staff = s.dataset.staff;
+            render();
+          }
+          let o = e.target.closest("[data-op]");
+          if (o) opPick(+o.dataset.op);
+        });
+        $("admit").onclick = admit;
+        $("diagnosis").onchange = renderActions;
+        $("commit").onclick = commit;
+        $("resolve").onclick = () =>
+          finish(undefined, "Clinical endpoint selected.");
+        $("modalClose").onclick = () => {
+          $("modal").classList.remove("show");
+          game.p = null;
+          game.resolved = false;
+          $("patientCard").classList.remove("pulseRed");
+          render();
+        };
+        $("nextDay").onclick = () => {
+          if (game.p && !game.resolved)
+            return toast("Resolve the current case first");
+          save.day++;
+          save.shift = 0;
+          Object.keys(save.supplies).forEach(
+            (k) => (save.supplies[k] += 2 + save.upgrades.pharmacy),
+          );
+          save.cash = Math.max(0, save.cash - 60);
+          toast("New shift · supplies delivered · $60 overhead");
+          render();
+        };
+        $("difficulty").onchange = (e) => {
+          save.difficulty = e.target.value;
+          persist();
+          toast("Difficulty updated");
+        };
+        $("sound").onclick = () => {
+          save.sound = !save.sound;
+          render();
+        };
+        $("motion").onclick = () => {
+          save.motion = !save.motion;
+          render();
+        };
+        $("export").onclick = () => {
+          let b = new Blob([JSON.stringify(save, null, 2)], {
+              type: "application/json",
+            }),
+            a = document.createElement("a");
+          a.href = URL.createObjectURL(b);
+          a.download = "vet-gods-save.json";
+          a.click();
+          URL.revokeObjectURL(a.href);
+        };
+        $("reset").onclick = () => {
+          if (confirm("Erase the entire campaign?")) {
+            localStorage.removeItem("vetGodsCampaign");
+            location.reload();
+          }
+        };
+        $("diagnosis").innerHTML =
+          '<option value="">Select suspected condition…</option>' +
+          CASES.map((c) => `<option value="${c.id}">${c.dx}</option>`).join("");
+        render();
+        log("Clinic ready. Campaign autosave loaded.");
+      })();
+    </script>
+    <script>
+      (() => {
+        "use strict";
+        const E = (id) => document.getElementById(id);
+        const pick = (a) => a[Math.floor(Math.random() * a.length)];
+        const cap = (n, a, b) => Math.max(a, Math.min(b, n));
+        const CASES = [
+          {
+            dx: "Airway crisis",
+            icons: ["🐶", "🐱", "🦜"],
+            signs: "Labored breathing and cyanotic mucosa",
+            base: 84,
+            tests: ["Pulse oximetry", "Chest imaging"],
+            cards: ["Oxygen", "Calm Handling", "Airway Support"],
+          },
+          {
+            dx: "Hemorrhagic shock",
+            icons: ["🐕‍🦺", "🐴", "🐱"],
+            signs: "Weak pulses, pallor and active blood loss",
+            base: 80,
+            tests: ["PCV / solids", "FAST scan"],
+            cards: ["Pressure Wrap", "Fluid Support", "Blood Products"],
+          },
+          {
+            dx: "Toxic exposure",
+            icons: ["🦮", "🐈‍⬛", "🐰"],
+            signs: "Tremors, vomiting and altered mentation",
+            base: 72,
+            tests: ["Toxin screen", "Chemistry panel"],
+            cards: ["Exposure History", "Decontaminate", "Fluid Support"],
+          },
+          {
+            dx: "Abdominal obstruction",
+            icons: ["🐕", "🐈", "🐰"],
+            signs: "Pain, vomiting and progressive distension",
+            base: 76,
+            tests: ["Ultrasound", "Abdominal imaging"],
+            cards: ["Pain Control", "Fluid Support", "Surgical Prep"],
+          },
+          {
+            dx: "Cardiac instability",
+            icons: ["🐶", "🐱", "🐴"],
+            signs: "Collapse, irregular pulse and poor perfusion",
+            base: 86,
+            tests: ["ECG", "Cardiac ultrasound"],
+            cards: ["Oxygen", "ECG Monitoring", "Emergency Medication"],
+          },
+          {
+            dx: "Severe infection",
+            icons: ["🐾", "🐰", "🦜"],
+            signs: "Fever, dehydration and profound lethargy",
+            base: 70,
+            tests: ["CBC", "Culture"],
+            cards: ["Isolation", "Fluid Support", "Targeted Therapy"],
+          },
+          {
+            dx: "Neurologic emergency",
+            icons: ["🐕", "🐈‍⬛", "🦜"],
+            signs: "Seizure activity and incomplete recovery",
+            base: 82,
+            tests: ["Glucose", "Neurologic exam"],
+            cards: ["Quiet Chamber", "Airway Support", "Emergency Medication"],
+          },
+          {
+            dx: "Thermal injury",
+            icons: ["🐶", "🐴", "🐇"],
+            signs: "Dangerous temperature and circulatory stress",
+            base: 74,
+            tests: ["Core temperature", "Coagulation panel"],
+            cards: [
+              "Controlled Cooling",
+              "Fluid Support",
+              "Continuous Monitor",
+            ],
+          },
+        ];
+        const names = [
+          "Apollo",
+          "Juniper",
+          "Milo",
+          "Raven",
+          "Poppy",
+          "Zeus",
+          "Freya",
+          "Comet",
+          "Ember",
+          "Waffles",
+          "Jasper",
+          "Storm",
+        ];
+        const rooms = [
+          "Triage",
+          "Exam 1",
+          "Exam 2",
+          "Imaging",
+          "Operating Room",
+          "ICU",
+          "Isolation",
+          "Recovery",
+        ];
+        const testCatalog = [
+          "CBC",
+          "Chemistry panel",
+          "ECG",
+          "Ultrasound",
+          "Chest imaging",
+          "FAST scan",
+          "Pulse oximetry",
+          "Toxin screen",
+        ];
+        const cardPool = [
+          "Oxygen",
+          "Fluid Support",
+          "Pain Control",
+          "Pressure Wrap",
+          "Calm Handling",
+          "Airway Support",
+          "Continuous Monitor",
+          "Isolation",
+          "Emergency Medication",
+          "Surgical Prep",
+          "Blood Products",
+          "Controlled Cooling",
+          "Quiet Chamber",
+          "Targeted Therapy",
+          "Decontaminate",
+          "Exposure History",
+          "ECG Monitoring",
+        ];
+        const events = [
+          [
+            "⚡ POWER FLICKER",
+            "Imaging is unavailable for one action; ICU batteries hold.",
+          ],
+          [
+            "🚑 MULTIPLE ARRIVAL",
+            "Two critical patients enter the queue together.",
+          ],
+          ["📦 SUPPLY DELAY", "The next action has a narrower perfect zone."],
+          [
+            "🐾 ESCAPED PATIENT",
+            "Staff fatigue rises while the team secures the ward.",
+          ],
+          ["🌩 STORM SURGE", "Waiting-room deterioration accelerates briefly."],
+          [
+            "🦠 ISOLATION ALERT",
+            "An infectious patient requires an isolation decision.",
+          ],
+        ];
+        const load = () => {
+          try {
+            return {
+              chapter: 1,
+              score: 0,
+              saved: 0,
+              lost: 0,
+              actions: 0,
+              fatigue: [8, 14, 5, 11],
+              recovery: [],
+              ...JSON.parse(localStorage.getItem("vetGodsLive") || "{}"),
+            };
+          } catch {
+            return {
+              chapter: 1,
+              score: 0,
+              saved: 0,
+              lost: 0,
+              actions: 0,
+              fatigue: [8, 14, 5, 11],
+              recovery: [],
+            };
+          }
+        };
+        let S = load(),
+          queue = [],
+          active = null,
+          revealed = new Set(),
+          hand = [],
+          pending = null,
+          needle = 0,
+          dir = 1,
+          anim = 0,
+          storm = 0;
+        function save() {
+          localStorage.setItem("vetGodsLive", JSON.stringify(S));
+        }
+        function makePatient(boss = false) {
+          const c = structuredClone(pick(CASES));
+          return {
+            ...c,
+            id: crypto.randomUUID
+              ? crypto.randomUUID()
+              : Date.now() + Math.random(),
+            name: boss ? "TITAN: " + pick(names) : pick(names),
+            icon: pick(c.icons),
+            distress: cap(
+              c.base + Math.floor(Math.random() * 15 - 7) + (boss ? 10 : 0),
+              45,
+              98,
+            ),
+            hr: 115 + Math.floor(Math.random() * 110),
+            o2: 78 + Math.floor(Math.random() * 18),
+            bp: 55 + Math.floor(Math.random() * 45),
+            temp: (98 + Math.random() * 8).toFixed(1),
+            room: "Waiting",
+            boss,
+            age: pick(["juvenile", "adult", "senior"]),
+            trait: pick(["fearful", "reactive", "stoic", "friendly"]),
+            secondary: pick([
+              "none",
+              "diabetes",
+              "renal risk",
+              "medication sensitivity",
+              "prior trauma",
+            ]),
+          };
+        }
+        function fillQueue() {
+          while (queue.length < 3) queue.push(makePatient(false));
+          if (
+            S.chapter % 5 === 0 &&
+            !queue.some((p) => p.boss) &&
+            !active?.boss
+          )
+            queue.unshift(makePatient(true));
+        }
+        function differentials() {
+          if (!active) return [];
+          const wrong = CASES.filter((c) => c.dx !== active.dx)
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3)
+            .map((c) => c.dx);
+          return [...wrong, active.dx].sort(() => Math.random() - 0.5);
+        }
+        let diffs = [];
+        function assign(id) {
+          if (active)
+            return flash("Finish or transfer the active patient first.");
+          const i = queue.findIndex((p) => p.id === id);
+          if (i < 0) return;
+          active = queue.splice(i, 1)[0];
+          active.room = "Triage";
+          revealed = new Set();
+          diffs = differentials();
+          drawHand();
+          dialogue(
+            `${active.name} is ${active.trait}. ${active.signs}. Secondary history: ${active.secondary}.`,
+          );
+          fillQueue();
+          renderLive();
+        }
+        function drawHand() {
+          if (!active) {
+            hand = [];
+            return;
+          }
+          const required = active.cards.filter(
+            (x) => !active.done?.includes(x),
+          );
+          const others = cardPool
+            .filter((x) => !required.includes(x))
+            .sort(() => Math.random() - 0.5);
+          hand = [...required.slice(0, 2), ...others]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 5);
+        }
+        function doTest(name) {
+          if (!active || revealed.has(name)) return;
+          revealed.add(name);
+          active.distress = cap(active.distress + 2 + storm, 0, 100);
+          active.hr += Math.floor(Math.random() * 7);
+          S.actions++;
+          fatigue(2);
+          dialogue(
+            `${name}: ${active.tests.includes(name) ? "strongly supports " + active.dx : "helps exclude competing causes"}.`,
+          );
+          if (S.actions % 4 === 0) event();
+          renderLive();
+        }
+        function chooseCard(name) {
+          if (!active) return;
+          pending = name;
+          E("skillPrompt").textContent =
+            `Timing challenge: stop the marker in green to perform ${name}.`;
+          E("skillStop").disabled = false;
+          cancelAnimationFrame(anim);
+          animateNeedle();
+        }
+        function animateNeedle() {
+          needle += dir * (1.4 + S.chapter * 0.04);
+          if (needle >= 100 || needle <= 0) dir *= -1;
+          needle = cap(needle, 0, 100);
+          E("skillNeedle").style.left = needle + "%";
+          anim = requestAnimationFrame(animateNeedle);
+        }
+        function stopSkill() {
+          if (!pending || !active) return;
+          cancelAnimationFrame(anim);
+          const accuracy = Math.abs(50 - needle),
+            perfect = accuracy <= 7,
+            good = accuracy <= 20,
+            needed = active.cards[active.done?.length || 0],
+            correct = pending === needed,
+            reduction = correct
+              ? perfect
+                ? 23
+                : good
+                  ? 16
+                  : 9
+              : perfect
+                ? 5
+                : -7;
+          active.done ||= [];
+          if (correct) active.done.push(pending);
+          active.distress = cap(active.distress - reduction, 0, 100);
+          active.o2 = cap(
+            active.o2 +
+              (pending.includes("Oxygen") || pending.includes("Airway")
+                ? 8
+                : 2),
+            60,
+            100,
+          );
+          active.bp = cap(
+            active.bp +
+              (pending.includes("Fluid") || pending.includes("Blood") ? 12 : 2),
+            40,
+            130,
+          );
+          active.hr = cap(active.hr - (correct ? 10 : -8), 45, 260);
+          S.score += Math.max(0, reduction * 5);
+          S.actions++;
+          fatigue(perfect ? 2 : 4);
+          dialogue(
+            `${pending}: ${perfect ? "perfect execution" : good ? "controlled execution" : "difficult attempt"}. ${correct ? "Protocol advanced." : "It did not match the next priority."}`,
+          );
+          pending = null;
+          E("skillStop").disabled = true;
+          E("skillPrompt").textContent =
+            "Choose another card or move the patient to the proper room.";
+          if (active.distress <= 20 && active.done.length >= 2) recover();
+          else if (active.distress >= 100) lose();
+          else {
+            drawHand();
+            if (S.actions % 4 === 0) event();
+            renderLive();
+          }
+        }
+        function recover() {
+          S.saved++;
+          S.score += active.boss ? 1500 : 500;
+          S.recovery.unshift({
+            name: active.name,
+            icon: active.icon,
+            status: pick(["monitoring", "resting", "awaiting discharge"]),
+            returnRisk: Math.random() < 0.28,
+          });
+          dialogue(`${active.name} has entered monitored recovery.`);
+          active = null;
+          S.chapter++;
+          S.fatigue = S.fatigue.map((x) => cap(x - 8, 0, 100));
+          save();
+          fillQueue();
+          renderLive();
+        }
+        function lose() {
+          S.lost++;
+          dialogue(`${active.name} required immediate specialist transfer.`);
+          active = null;
+          S.chapter++;
+          save();
+          fillQueue();
+          renderLive();
+        }
+        function moveRoom(name) {
+          if (!active) return;
+          const best = active.dx.includes("infection")
+            ? "Isolation"
+            : active.cards.includes("Surgical Prep")
+              ? "Operating Room"
+              : active.distress > 65
+                ? "ICU"
+                : active.tests.some((t) => /imaging|scan|Ultrasound/.test(t))
+                  ? "Imaging"
+                  : "Exam 1";
+          active.room = name;
+          if (name === best) {
+            active.distress = cap(active.distress - 7, 0, 100);
+            dialogue(`Correct placement: ${name} grants a care bonus.`);
+          } else {
+            active.distress = cap(active.distress + 3, 0, 100);
+            dialogue(
+              `${name} works, but another room better matches current needs.`,
+            );
+          }
+          renderLive();
+        }
+        function fatigue(n) {
+          S.fatigue = S.fatigue.map((x, i) =>
+            cap(x + n + (i === S.actions % 4 ? 3 : 0), 0, 100),
+          );
+        }
+        function event() {
+          const ev = pick(events);
+          E("liveEvent").innerHTML = `<b>${ev[0]}</b> · ${ev[1]}`;
+          E("liveEvent").classList.add("show");
+          setTimeout(() => E("liveEvent").classList.remove("show"), 5000);
+          if (ev[0].includes("MULTIPLE")) {
+            queue.push(makePatient(), makePatient());
+          }
+          if (ev[0].includes("STORM")) storm = 2;
+          if (ev[0].includes("ESCAPED")) fatigue(8);
+        }
+        function dialogue(t) {
+          E("liveDialogue").textContent = t;
+        }
+        function flash(t) {
+          dialogue(t);
+        }
+        function renderLive() {
+          E("liveChapter").textContent = S.chapter;
+          E("bossLabel").textContent =
+            S.chapter % 5 === 0 ? "⚠ BOSS EMERGENCY" : "Regular Shift";
+          E("liveQueue").innerHTML = queue
+            .map(
+              (p) =>
+                `<div class="queue-patient ${p.distress >= 88 ? "urgent" : ""}"><span class="qicon">${p.icon}</span><span><b>${p.name}</b><small>${p.signs}<br>Distress ${Math.round(p.distress)}</small></span><button class="small" data-live-assign="${p.id}">Admit</button></div>`,
+            )
+            .join("");
+          E("liveStaff").innerHTML = [
+            "Mara · Surgery",
+            "Finn · ER",
+            "Iya · Lab",
+            "Rowan · ICU",
+          ]
+            .map(
+              (x, i) =>
+                `<div class="room"><b>${x}</b><small>Fatigue ${S.fatigue[i]}%</small><div class="fatigue"><i style="width:${S.fatigue[i]}%"></i></div></div>`,
+            )
+            .join("");
+          E("wardMap").innerHTML = rooms
+            .map(
+              (r) =>
+                `<div class="room ${active?.room === r ? "active" : ""}" data-live-room="${r}"><b>${r}</b><small>${active?.room === r ? active.icon + " " + active.name : "Available"}</small></div>`,
+            )
+            .join("");
+          E("liveDiff").innerHTML = active
+            ? diffs
+                .map(
+                  (d) =>
+                    `<span class="diff-item ${revealed.size >= 2 && d === active.dx ? "likely" : ""}">${d}</span>`,
+                )
+                .join("")
+            : "<span class='sub'>No active patient.</span>";
+          const tests = active
+            ? [
+                ...new Set([
+                  ...active.tests,
+                  ...testCatalog.sort(() => Math.random() - 0.5).slice(0, 4),
+                ]),
+              ].slice(0, 6)
+            : [];
+          E("liveTests").innerHTML = tests
+            .map(
+              (t) =>
+                `<button class="small" data-live-test="${t}" ${revealed.has(t) ? "disabled" : ""}>${revealed.has(t) ? "✓ " : ""}${t}</button>`,
+            )
+            .join("");
+          E("liveHand").innerHTML = hand
+            .map(
+              (c) =>
+                `<div class="card" data-live-card="${c}"><span class="cost">⚕</span><h4>${c}</h4><p>${active?.cards.includes(c) ? "Potential protocol card" : "Situational intervention"}</p></div>`,
+            )
+            .join("");
+          E("mHR").textContent = active ? Math.round(active.hr) : "—";
+          E("mO2").textContent = active ? Math.round(active.o2) + "%" : "—";
+          E("mBP").textContent = active ? Math.round(active.bp) : "—";
+          E("mTemp").textContent = active ? active.temp + "°" : "—";
+          E("recoveryList").innerHTML = S.recovery.length
+            ? S.recovery
+                .slice(0, 6)
+                .map(
+                  (p) =>
+                    `<div class="room"><b>${p.icon} ${p.name}</b><small>${p.status}${p.returnRisk ? " · readmission risk" : ""}</small></div>`,
+                )
+                .join("")
+            : "No recovering patients.";
+          E("liveObjectives").innerHTML =
+            `<b>Chapter goal</b><br>Stabilize ${S.chapter % 5 === 0 ? "the boss patient" : "three patients"}.<br><br><b>Campaign</b><br>Score ${S.score.toLocaleString()} · Saved ${S.saved} · Transfers ${S.lost}<br><br><b>Next unlock</b><br>${S.chapter < 5 ? "Disaster Response at Chapter 5" : S.chapter < 10 ? "Wildlife Center at Chapter 10" : "Elite Teaching Hospital"}`;
+          save();
+        }
+        function monitor() {
+          const c = E("ecg"),
+            x = c.getContext("2d");
+          let phase = 0;
+          function frame() {
+            x.fillStyle = "#05080b";
+            x.fillRect(0, 0, c.width, c.height);
+            x.strokeStyle = "#12352e";
+            x.lineWidth = 1;
+            for (let i = 0; i < c.width; i += 35) {
+              x.beginPath();
+              x.moveTo(i, 0);
+              x.lineTo(i, c.height);
+              x.stroke();
+            }
+            for (let i = 0; i < c.height; i += 25) {
+              x.beginPath();
+              x.moveTo(0, i);
+              x.lineTo(c.width, i);
+              x.stroke();
+            }
+            x.strokeStyle = active && active.o2 < 85 ? "#ff5d6c" : "#38d7c4";
+            x.lineWidth = 3;
+            x.beginPath();
+            for (let i = 0; i < c.width; i++) {
+              const p = (i + phase) % 100,
+                spike =
+                  p > 43 && p < 48
+                    ? p === 45
+                      ? -48
+                      : 24
+                    : Math.sin((i + phase) / 17) * 3,
+                y =
+                  68 +
+                  spike +
+                  (active
+                    ? Math.sin(i / 8) * Math.min(8, active.distress / 14)
+                    : 0);
+              i ? x.lineTo(i, y) : x.moveTo(i, y);
+            }
+            x.stroke();
+            phase += active ? cap(active.hr / 65, 1, 4) : 0.5;
+            requestAnimationFrame(frame);
+          }
+          frame();
+        }
+        document.addEventListener("click", (e) => {
+          const a = e.target.closest("[data-live-assign]");
+          if (a) assign(a.dataset.liveAssign);
+          const t = e.target.closest("[data-live-test]");
+          if (t) doTest(t.dataset.liveTest);
+          const c = e.target.closest("[data-live-card]");
+          if (c) chooseCard(c.dataset.liveCard);
+          const r = e.target.closest("[data-live-room]");
+          if (r) moveRoom(r.dataset.liveRoom);
+        });
+        E("skillStop").onclick = stopSkill;
+        E("addQueue").onclick = () => {
+          queue.push(makePatient());
+          renderLive();
+          event();
+        };
+        setInterval(() => {
+          if (!document.getElementById("hospital").classList.contains("active"))
+            return;
+          queue.forEach(
+            (p) => (p.distress = cap(p.distress + 1 + storm, 0, 100)),
+          );
+          if (active) {
+            active.distress = cap(active.distress + 0.4, 0, 100);
+            active.o2 = cap(active.o2 - 0.08, 60, 100);
+          }
+          storm = Math.max(0, storm - 0.2);
+          renderLive();
+        }, 5000);
+        fillQueue();
+        renderLive();
+        monitor();
+      })();
+    </script>
+  </body>
+</html>
